@@ -1,10 +1,14 @@
 # Seminar 1 OOP
 
-## Geometric Point class
+## Contact information
 
-#### UML diagram
+lorenzo.stecanella@upf.edu
 
-![](/Users/alejandro/Sync/Computer_Engineering/Object_Oriented_Programming/oop_labs/S1/uml-point.svg)
+## Geometric Point class
+
+#### UML diagram
+
+![](uml-point.svg)
 
 #### Implementation
 
@@ -49,9 +53,9 @@ public class Point{
 
 ## Matrix Distance class
 
-#### UML diagram
+#### UML diagram
 
-![uml-MatrixDistance](/Users/alejandro/Sync/Computer_Engineering/Object_Oriented_Programming/oop_labs/S1/uml-MatrixDistance.svg)
+![uml-MatrixDistance](uml-MatrixDistance.svg)
 
 #### Implementation
 

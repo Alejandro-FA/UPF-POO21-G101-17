@@ -73,11 +73,7 @@ public class MatrixDistance{
     }
      
     // Other methods
-	public double getDistance(Point p1, Point p2){
-        xDist = p2.x - p1.x;
-        yDist = p2.y - p1.y;
-        return Math.sqrt(xDist*xDist + yDist*yDist);
-    }
+    //Note that 'getDistance' can be called from the "Point" class.	
     
     private void buildMatrix(Point newPoint){
         // TO DO

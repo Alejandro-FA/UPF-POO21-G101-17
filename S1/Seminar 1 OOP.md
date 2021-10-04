@@ -65,33 +65,34 @@ public class MatrixDistance{
     private List<Point> pointsList;
     // private double[10][10] matrix;
     private List<List<Double>> matrix;
-   
     private int size;
     
     // Constructor method
     public MatrixDistance(){
         pointsList = new ArrayList<Point>();
         matrix = new ArrayList<ArrayList<Double>>(); 
-	size = 0;
+		size = 0;
     }
      
     // Other methods
-    //Note that 'getDistance' can be called from the "Point" class.	
+    public double getDistance(int idx_p1, int idx_p2){
+        return matrix.get(idx_p1).get(idx_p2);
+    }
     
     private void buildMatrix(){
     	pointsList.add(new ArrayList<Double>());
         for(int i = 0; i < size; i++){
-	    int distance = pointsList.get(size).distanceTo(pointsList.get(i));
-	    matrix.get(size).add(distance);
-	    matrix.get(i).add(distance);
-	}
-	pointList.get(size).add(0.0);
+            int distance = pointsList.get(size).distanceTo(pointsList.get(i));
+            matrix.get(size).add(distance);
+            matrix.get(i).add(distance);
+		}
+		pointList.get(size).add(0.0);
     }
     
     public void addPoint(Point newPoint){
     	pointsList.add(newPoint);
         buildMatrix();
-	size++;
+		size++;
     }
 }
 ```

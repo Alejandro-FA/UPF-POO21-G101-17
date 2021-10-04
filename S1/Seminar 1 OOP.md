@@ -75,8 +75,8 @@ public class MatrixDistance{
     }
      
     // Other methods
-    public double getDistance(int idx_p1, int idx_p2){
-        return matrix.get(idx_p1).get(idx_p2);
+    public double getDistance(int row, int col){
+        return matrix.get(row).get(col);
     }
     
     private void buildMatrix(){

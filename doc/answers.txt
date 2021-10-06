@@ -72,3 +72,73 @@ Question 3:
     to be added to the staging area. Furthermore, there's a difference between modified files and untracked
     files.
 
+Question 4:
+    A good message for the first commit could be something like: "First commit. README and answers.txt added."
+        alejandro@MacBook-Pro-de-Alejandro oop_labs % git commit -m "First commit. README and answers.txt added."
+        [master bb8b25e] First commit. README and answers.txt added.
+        2 files changed, 78 insertions(+)
+        create mode 100644 README.md
+        create mode 100644 doc/answers.txt
+
+    After the `git commit` command, the `git status` output is:
+        alejandro@MacBook-Pro-de-Alejandro oop_labs % git status
+        On branch master
+        Your branch is ahead of 'origin/master' by 1 commit.
+        (use "git push" to publish your local commits)
+
+        nothing to commit, working tree clean
+
+Question 5:
+    In the log there is just one commit, the one that we've done just before:
+        commit bb8b25eb0f04f55754ce34efdc31229293d67c12 (HEAD -> master)
+        Author: Alejandro-FA <61871580+Alejandro-FA@users.noreply.github.com>
+        Date:   Wed Oct 6 17:20:34 2021 +0200
+
+        First commit. README and answers.txt added.
+
+    The first 7 digits that identify the commit are: bb8b25e
+
+    After executing `git push`:
+        alejandro@MacBook-Pro-de-Alejandro oop_labs % git push 
+        Enumerating objects: 6, done.
+        Counting objects: 100% (6/6), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (4/4), done.
+        Writing objects: 100% (5/5), 1.30 KiB | 1.30 MiB/s, done.
+        Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+        remote: This repository moved. Please use the new location:
+        remote:   https://github.com/Alejandro-FA/UPF-POO21-G101-04.git
+        To https://github.com/Alejandro-FA/oop_labs.git
+        d3299b0..bb8b25e  master -> master
+
+Question 6:
+    The output is:
+        alejandro@MacBook-Pro-de-Alejandro oop_labs % git show HEAD
+        commit 502a0173e7e410b650bb5ed8feaa7a52f762c762 (HEAD -> master)
+        Author: Alejandro-FA <61871580+Alejandro-FA@users.noreply.github.com>
+        Date:   Wed Oct 6 17:29:16 2021 +0200
+
+            Added 1 line to README.md
+
+        diff --git a/README.md b/README.md
+        index f72c0a7..057d653 100644
+        --- a/README.md
+        +++ b/README.md
+        @@ -1,4 +1,4 @@
+        # UPF-POO21-G101-04
+        
+        ## Lab 0 status
+        -Testing git.
+        \ No newline at end of file
+        +Testing git. Still testing git.
+        \ No newline at end of file
+
+    As we can see, the output shows all the changes realized in the last commit.
+
+Question 7:
+    alejandro@MacBook-Pro-de-Alejandro oop_labs % git reset HEAD README.md
+    Unstaged changes after reset:
+    M	README.md
+    M	doc/answers.txt
+
+    As we can see, the README.md is no longer in the staging area after executing the `git reset` command.

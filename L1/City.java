@@ -1,11 +1,15 @@
-public class Point {
+
+
+public class City {
     private double x;
     private double y;
+    private String name;
     
     // Constructor method
-    public Point(double initX, double initY){
+    public City(double initX, double initY, String initName){
         x = initX;
         y = initY;
+        name = initName;
     }
     
     // Getters and setters
@@ -21,15 +25,19 @@ public class Point {
     public void setY(double newY){
         y = newY;
 	}
+
+    public String getName(){
+        return name;
+    }
     
     // Other methods
-    public double distanceTo(Point point2){
-        double xDist = point2.x - x;
-        double yDist = point2.y - y;
+    public double distanceTo(City city2){
+        double xDist = city2.x - x;
+        double yDist = city2.y - y;
         return Math.sqrt(xDist*xDist + yDist*yDist);
     }
     
-    public void printPoint(){
+    public void printCity(){
          System.out.println("(" + x + ", " + y + ")");
     }
 }

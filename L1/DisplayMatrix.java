@@ -144,7 +144,7 @@ public class DisplayMatrix extends javax.swing.JFrame {
     	}
 	
 		matrix.addCity( x, y, name );
-		matrix.createDistanceMatrix();
+		//matrix.createDistanceMatrix();
 		int n = matrix.getNoOfCities();
         jPanel3.removeAll();
     	jPanel3.setLayout( new java.awt.GridLayout( n+1, n+1 ) );

@@ -9,7 +9,7 @@ The second part was creating a class  which contained a matrix. This matrix comp
 Therefore, we can easily visualize the distance between two points by printing the matrix.
 
 ## Theoretical background
-This practice has focused on object modelling with java. On one hand, we have had our first contact with how should an object be implemented in java using classes. Then, we have established a relation between two classes, in particular a **composition/aggregation relation between the `Point` class and the `DistanceMatrix` class**.
+This practice has focused on object modelling with java. On one hand, we have had our first contact with how should an object be implemented in java using classes. Then, we have established a relation between two classes, in particular an **aggregation relation between the `Point` class and the `DistanceMatrix` class**. We use aggregation instead of composition because the list of `Points` that the DistanceMatrix uses may vary in time.
 
 ## Alternative solutions discussed
 Firstly we implemented the matrix with `ArrayLists`, which worked fine and was a good option. After discussing it with the practice teacher, we were told that `LinkedLists` are more efficient. Therefore, we ended up changing it. 

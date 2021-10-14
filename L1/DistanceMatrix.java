@@ -27,7 +27,7 @@ public class DistanceMatrix implements Matrix{
     }
     
     // Other methods
-    public void createDistanceMatrix(){
+    private void createDistanceMatrix(){
     	matrix.add(new LinkedList<Double>());
         for(int i = 0; i < size; i++){
             double distance = CitiesList.get(size).distanceTo(CitiesList.get(i));

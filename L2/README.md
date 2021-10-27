@@ -23,7 +23,7 @@ The process followed to create the class `World` is similar to the one explained
 We have added the attribute `world` as specified in the guidelines and modified the constructor accordingly.
 
 ## MyWindow
-We have added a large section that just consists on the creation of the regions of each continent of the world. **We thought that doing this step using a read system call** would be better, but it was out of the scope of the lab and writing the coordinates directly in the code works just fine.
+We have added a large section that just consists on the creation of the regions of each continent of the world. **We thought that doing this step using a separate .txt file and read system call** would be better, but it was out of the scope of the lab and writing the coordinates directly in the code works just fine.
 
 ## Creation of the map
 In order to draw a map similar to the globe, we have downloaded an image of the actual globe. Then, we have decided to include North and South America, Africa and EuroAsia as continents, each of which will only have two countries. 

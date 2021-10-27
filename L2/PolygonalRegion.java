@@ -5,27 +5,42 @@ public class PolygonalRegion {
     private List<Point> points;
     
     /************************ Constructor ************************/
+    // Here we perform an upcast to allow the use of both ArrayList and LinkedList.
     public PolygonalRegion(List<Point> lst) {
         points = lst;
     }
 
     /************************ Methods ****************************/
+    // For now we are going to assume that the polygon is convex.
     public double getArea() {
-        // For now we are going to assume that the polygon is convex.
         int last_idx = points.size() - 1;
-        double area = 0.0;
+        double area = 0;
 
         // Sum of the all the elements except the last one
         for (int i = 0; i < last_idx; i++) {
-            Point p1 = points.get(i);
-            Point p2 = points.get(i+1);
+            Point pi = points.get(i);
+            Point pj = points.get(i+1);
 
-            area += p1.getX()*p2.getY() - p1.getY()*p2.getX();
+            area += pi.getX()*pj.getY() - pi.getY()*pj.getX();
         }
 
         // Last element is computed separately, since it is different
-        Point first_p = points.get(0);
-        Point last_p = points.get(last_idx);
-        return 0.5 * ( area + last_p.getX()*first_p.getY() - last_p.getY()*first_p.getX() );
+        Point p1 = points.get(0);
+        Point pn = points.get(last_idx);
+        return 0.5 * ( area + pn.getX()*p1.getY() - pn.getY()*p1.getX() );
+    }
+
+    public void draw(java.awt.Graphics g) {
+        int last_idx = points.size() - 1;
+
+        for (int i = 0; i < last_idx; i++){
+            Point pi = points.get(i);
+            Point pj = points.get(i+1);
+            g.drawLine((int) pi.getX(), (int) pi.getY(), (int) pj.getX(), (int) pj.getY());
+        }
+
+        Point p1 = points.get(0);
+        Point pn = points.get(last_idx);
+        g.drawLine((int) pn.getX(), (int) pn.getY(), (int) p1.getX(), (int) p1.getY());
     }
 }

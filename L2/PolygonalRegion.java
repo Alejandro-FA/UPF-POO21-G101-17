@@ -31,16 +31,16 @@ public class PolygonalRegion {
     }
 
     public void draw(java.awt.Graphics g) {
-        int last_idx = points.size() - 1;
+        int n = points.size();
+        int[] x = new int[n];
+        int[] y = new int[n];
 
-        for (int i = 0; i < last_idx; i++){
-            Point pi = points.get(i);
-            Point pj = points.get(i+1);
-            g.drawLine((int) pi.getX(), (int) pi.getY(), (int) pj.getX(), (int) pj.getY());
+        for (int i = 0; i < n; i++) {
+            Point p = points.get(i);
+            x[i] = (int) p.getX();
+            y[i] = (int) p.getY();
         }
 
-        Point p1 = points.get(0);
-        Point pn = points.get(last_idx);
-        g.drawLine((int) pn.getX(), (int) pn.getY(), (int) p1.getX(), (int) p1.getY());
+        g.drawPolygon(x, y, n);
     }
 }

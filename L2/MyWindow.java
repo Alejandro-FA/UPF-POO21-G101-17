@@ -12,14 +12,16 @@ public class MyWindow extends javax.swing.JFrame {
 
     public static void main( String[] args ) {
         // Regions coordinates
-        Point[] can_points = {new Point(278,436/2), new Point(125,452/2), new Point(59,288/2), new Point(259,295/2)};
-        Point[] usa_points = {new Point(278, 436/2), new Point(125, 452/2), new Point(204, 634/2)};
-        Point[] bra_points = {new Point(204,634/2), new Point(250,808/2), new Point(316,798/2)};
-        Point[] arg_points = {new Point(250, 808/2), new Point(316, 798/2), new Point(258, 992/2)};
-        Point[] sudaf_points = {new Point(493, 804/2), new Point(454, 630/2), new Point(547, 605/2)};
-        Point[] alger_points = {new Point(454, 630/2), new Point(547, 605/2), new Point(423, 489/2), new Point(542, 511/2)};
-        Point[] cat_points = {new Point(429,477/2), new Point(527,454/2), new Point(517, 276/2)};
-        Point[] russ_points = {new Point(527, 454/2), new Point(517, 276/2), new Point(875, 237/2), new Point(700, 632/2)};
+        double yscale = 1.8;
+
+        Point[] can_points = {new Point(278,436/yscale), new Point(125,452/yscale), new Point(59,288/yscale), new Point(259,295/yscale)};
+        Point[] usa_points = {new Point(278, 436/yscale), new Point(125, 452/yscale), new Point(204, 634/yscale)};
+        Point[] bra_points = {new Point(204,634/yscale), new Point(250,808/yscale), new Point(316,798/yscale)};
+        Point[] arg_points = {new Point(250, 808/yscale), new Point(316, 798/yscale), new Point(258, 992/yscale)};
+        Point[] sudaf_points = {new Point(493, 804/yscale), new Point(454, 630/yscale), new Point(547, 605/yscale)};
+        Point[] alger_points = {new Point(454, 630/yscale), new Point(547, 605/yscale), new Point(542, 511/yscale), new Point(423, 489/yscale)};
+        Point[] cat_points = {new Point(429,477/yscale), new Point(527,454/yscale), new Point(517, 276/yscale)};
+        Point[] russ_points = {new Point(527, 454/yscale), new Point(517, 276/yscale), new Point(875, 237/yscale), new Point(700, 632/yscale)};
 
         List<Point> can_coords = Arrays.asList(can_points);
         List<Point> usa_coords = Arrays.asList(usa_points);

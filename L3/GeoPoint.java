@@ -7,10 +7,10 @@ public class GeoPoint extends Point {
     }
 
     public void draw(java.awt.Graphics g){
-        int x = (int)x;
-        int y = (int)y;
+        int xi = (int)x;
+        int yi = (int)y;
 
-        g.fillOval(x,  y,  2,  2);
-        g.drawString(name, x, y);
+        g.fillOval(xi,  yi,  2,  2);
+        g.drawString(name, xi, yi);
     }
 }

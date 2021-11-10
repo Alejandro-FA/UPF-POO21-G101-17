@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class PolygonalRegion extends Region {
+public class PolygonalRegion {
     /************************ Attributes *************************/
     protected List<Point> points;
     
@@ -13,7 +13,6 @@ public class PolygonalRegion extends Region {
 
     /************************ Methods ****************************/
     // For now we are going to assume that the polygon is convex.
-    @Override
     public double getArea() {
         int last_idx = points.size() - 1;
         double area = 0;
@@ -36,7 +35,6 @@ public class PolygonalRegion extends Region {
     polygon correctly. We could not assume this, but then we should implement some 
     procedure to order the list of pointss in such a way that the polygon is always drawn
     as it should.*/ 
-    @Override
     public void draw(java.awt.Graphics g) {
         int n = points.size();
         int[] x = new int[n];

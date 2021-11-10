@@ -3,10 +3,12 @@ import java.util.*;
 public class World {
     /************************ Attributes *************************/
     private List<Continent> conts;
+    private List<Ocean> oceans;
 
     /************************ Constructor ************************/
-    public World(List<Continent> conts) {
+    public World(List<Continent> conts, List<Ocean> oceans ) {
         this.conts = conts;
+        this.oceans = oceans;
     }
 
     /************************ Methods ****************************/

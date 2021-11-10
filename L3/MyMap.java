@@ -1,6 +1,9 @@
 public class MyMap extends javax.swing.JPanel {
     /************************ Attributes *************************/
-    World world;
+    private World world;
+    public static final int xdim = 1000;
+    public static final int ydim = 1000;
+
 
     /************************ Constructor ************************/
     public MyMap(World world) {
@@ -14,11 +17,11 @@ public class MyMap extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, xdim, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, ydim, Short.MAX_VALUE)
         );
     }
 
@@ -26,6 +29,5 @@ public class MyMap extends javax.swing.JPanel {
         super.paint( g );
         world.draw( g );
     }
-
 }
 

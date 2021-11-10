@@ -30,6 +30,10 @@ public class PolygonalRegion {
         return 0.5 * ( area + pn.getX()*p1.getY() - pn.getY()*p1.getX() );
     }
 
+    /* For now we are going to assume that the points are ordered in order to draw the 
+    polygon correctly. We could not assume this, but then we should implement some 
+    procedure to order the list of points in such a way that the polygon is always drawn
+    as it should.*/ 
     public void draw(java.awt.Graphics g) {
         int n = points.size();
         int[] x = new int[n];

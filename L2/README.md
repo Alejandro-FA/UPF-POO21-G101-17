@@ -13,6 +13,8 @@ Then, in the `getArea()` method we have used the mathematical formula suggested 
 
 Finally, we have decided to use the `drawPolygon` method of the `Graphics` in our `draw()` method because we thought that it might be more optimized for drawing polygons than just drawing lines. The conversion from a list of Points to 2 arrays of coordinates is pretty straightforward.
 
+Both these methods assume that the **order of the points** that define the polygon are specified **clock-wise** or **anti clock-wise**. Otherwise the results are not correct. This isn't optimal by far, but implementing a procedure to order the points appropiately is time-consuming and quite complex. Furthermore, we would probably need to add aditional methods to the existing classes (such as a way to compute the distance between 2 points). After commenting this issue with other groups, it seems that the problem is out of the scope of the lab, and it is better to leave it as is.
+
 ## Continent
 The class continent only has the attribute `countries`, which is a list of `PolygonalRegion`. Each of this regions will represent a conuntry. In order to draw it we created the method `draw`, which iterates over all the countries of the `Continent` instance and calls the `draw` method of each country (`PolygonalRegion`)
 

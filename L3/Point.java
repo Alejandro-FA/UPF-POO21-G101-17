@@ -1,7 +1,7 @@
 public class Point {
     /************************ Attributes *************************/
-    private double x;
-    private double y;
+    protected double x;
+    protected double y;
 
     /************************ Constructor ************************/
     public Point(double x, double y) {

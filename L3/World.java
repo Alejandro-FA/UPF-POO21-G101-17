@@ -3,7 +3,7 @@ import java.util.*;
 public class World {
     /************************ Attributes *************************/
     private List<Continent> conts;
-
+    
     /************************ Constructor ************************/
     public World(List<Continent> conts) {
         this.conts = conts;

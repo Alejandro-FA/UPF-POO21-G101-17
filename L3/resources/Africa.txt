@@ -2,6 +2,11 @@ South Africa
 493 804
 454 630
 547 605
+Cape Town 60000000 34.0 -12.3
+Cape Town 60000000 34.0 -12.3
+Cape Town 60000000 34.0 -12.3
+Cape Town 60000000 34.0 -12.3
+Cape Town 60000000 34.0 -12.3
 
 Algeria
 454 630

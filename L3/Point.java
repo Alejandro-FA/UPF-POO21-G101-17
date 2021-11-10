@@ -4,9 +4,9 @@ public class Point {
     private double y;
 
     /************************ Constructor ************************/
-    public Point(double xInit, double yInit) {
-        x = xInit;
-        y = yInit;
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
     /************************ Methods ****************************/

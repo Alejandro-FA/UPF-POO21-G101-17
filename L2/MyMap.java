@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class MyMap extends javax.swing.JPanel {
     /************************ Attributes *************************/
     World world;

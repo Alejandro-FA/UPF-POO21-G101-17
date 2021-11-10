@@ -1,4 +1,3 @@
 # UPF-POO21-G101-04
 
-## Lab 0 status
-Testing git. New sentence.
+The reports can be found inside each corresponding lab folder. They are called "README" for increased visibility.

@@ -40,28 +40,38 @@ public class MyWindow extends javax.swing.JFrame {
                     while ( file_scan.hasNext(point_pattern) ) { // Check if there are more points that define the border
                         String str = file_scan.nextLine();
                         Scanner str_scan = new Scanner(str);
-                        double longitude = str_scan.nextDouble();
                         double latitude = str_scan.nextDouble();
+                        double longitude = str_scan.nextDouble();
                         str_scan.close();
                         points.add( MyMap.webMercatorProj(latitude, longitude) );
                     }
 
                     // Read cities
-                    List<Point> cities = new LinkedList<Point>();
-                    
-                    // String capital_name = file_scan.next();
-                    // int capital_numhab = file_scan.nextInt();
-                    // double longitude = file_scan.nextDouble();
-                    // double latitude = file_scan.nextDouble();
-                    // Point p = MyMap.webMercatorProj(latitude, longitude);
-                    // City capital = new City(p.getX(), p.getY(), capital_name, capital_numhab);
+                    List<City> cities = new LinkedList<City>();
+                    while ( file_scan.hasNext(city_pattern)){
+                        String str = file_scan.nextLine();
+                        Scanner str_scan = new Scanner(str);
+                        String city_name = "";
+                        while(str_scan.hasNextInt()==false){
+                            city_name = city_name + " " + str_scan.next();                       
+                        }
+                        int habitants = str_scan.nextInt();
+                        double latitude = str_scan.nextDouble();
+                        double longitude = str_scan.nextDouble();
+
+                        Point p = MyMap.webMercatorProj(latitude, longitude);
+                        cities.add(new City(p.getX(), p.getY(), city_name, habitants));
+                        str_scan.close();
+                    }
 
                     // Add country to the list. The capital is the first city
-                    if (points.isEmpty() == false && cities.isEmpty() == false) countries.add( new Country(points, name, capital) );
-
-                    // Read the rest of the cities (if any), and add them to the country
-                    
-                    // TODO
+                    if (points.isEmpty() == false && cities.isEmpty() == false) {
+                        Country c = new Country(points, name, cities.get(0));
+                        countries.add(c);
+                        for(City city: cities){
+                            c.addCity(city);
+                        }
+                    }
                 }
 
                 // Add new continent to the list of continents

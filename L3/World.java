@@ -5,8 +5,8 @@ public class World {
     private List<Continent> conts;
 
     /************************ Constructor ************************/
-    public World(List<Continent> conts_list) {
-        conts = conts_list;
+    public World(List<Continent> conts) {
+        this.conts = conts;
     }
 
     /************************ Methods ****************************/

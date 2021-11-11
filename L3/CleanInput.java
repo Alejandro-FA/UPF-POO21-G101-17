@@ -8,7 +8,7 @@ public class CleanInput {
         try {
             Scanner file_scan = new Scanner(geojson);
 
-            for (int i = 0; i < 3; i++) {
+            while (file_scan.hasNextLine()) {
                 // Read line to move to new file
                 String input_str = file_scan.nextLine();
 

@@ -40,8 +40,8 @@ public class MyWindow extends javax.swing.JFrame {
                     while ( file_scan.hasNext(point_pattern) ) { // Check if there are more points that define the border
                         String str = file_scan.nextLine();
                         Scanner str_scan = new Scanner(str);
-                        double latitude = str_scan.nextDouble();
                         double longitude = str_scan.nextDouble();
+                        double latitude = str_scan.nextDouble();
                         str_scan.close();
                         points.add( MyMap.webMercatorProj(latitude, longitude) );
                     }

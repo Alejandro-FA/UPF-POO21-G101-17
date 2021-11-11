@@ -12,12 +12,9 @@ public class MyWindow extends javax.swing.JFrame {
     }
 
     public static void main( String[] args ) {
-        // Map scaling
-        // double yscale = 0.6;
-        // double xscale = 1.0;
-        String point_pattern = "[+-]?[0-9]*[.]?[0-9]* [+-]?[0-9]*[.]?[0-9]*"; // Two doubles separated by a whitespace
+        String point_pattern = "[ ]*[+-]?[0-9]*[.]?[0-9]* [+-]?[0-9]*[.]?[0-9]*[ ]*"; // Two doubles separated by a whitespace
         // City name (accepts composite names like South Africa) + num_inhabitants + point
-        String city_pattern = "([A-Z][a-z]*[ ]?)+ [0-9]+ " + point_pattern;
+        String city_pattern = "[ ]*([A-Z][a-z]*[.]?[ ]?)+" + "[ ]" + "[0-9]+" + point_pattern;
 
         // Input. Each continent is stored in a separate .txt file
         File folder = new File("resources");

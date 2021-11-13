@@ -1,10 +1,10 @@
 All Geographic data has been obtained from DataHub.io (https://datahub.io/collections/geojson),
-which in turns uses the raw data of Natural Earh (https://www.naturalearthdata.com/downloads/10m-cultural-vectors/).
+which in turns uses the raw data of Natural Earth (https://www.naturalearthdata.com/downloads/10m-cultural-vectors/).
 Both sources allow the use of their data under these conditions:
  - https://www.naturalearthdata.com/about/terms-of-use/
  - https://opendatacommons.org/licenses/pddl/1-0/ 
 
 You can also use our files under the previous conditions. If so, a mention to our work is welcome.
 
-The division between continents has been performed accoriding to https://simple.wikipedia.org/wiki/List_of_countries_by_continents.
+The division between continents has been performed according to https://simple.wikipedia.org/wiki/List_of_countries_by_continents.
 For border-line or unspecified cases, we have tried to assign the region to the geographically closest continent.

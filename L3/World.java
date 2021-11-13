@@ -5,7 +5,12 @@ public class World {
     private List<Continent> conts;
     private List<Ocean> oceans;
 
-    /************************ Constructor ************************/
+    /************************ Constructors ************************/
+    public World(List<Continent> conts) {
+        this.conts = conts;
+        this.oceans = new LinkedList<Ocean>();
+    }
+
     public World(List<Continent> conts, List<Ocean> oceans ) {
         this.conts = conts;
         this.oceans = oceans;

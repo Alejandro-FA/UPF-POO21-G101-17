@@ -1,3 +1,4 @@
+package input;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.regex.Pattern;

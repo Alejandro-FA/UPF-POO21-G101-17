@@ -1,3 +1,4 @@
+package main;
 public class MyMap extends javax.swing.JPanel {
     /************************ Attributes *************************/
     private World world;

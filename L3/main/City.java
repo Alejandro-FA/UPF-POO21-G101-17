@@ -1,3 +1,4 @@
+package main;
 public class City extends GeoPoint {
     private int numhab;
 

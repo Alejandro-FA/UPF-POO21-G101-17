@@ -1,3 +1,4 @@
+package input;
 public class CreateInputFiles {
     public static void main(String[] args) {
         // BorderFiles.json2CSV("countries.geojson");

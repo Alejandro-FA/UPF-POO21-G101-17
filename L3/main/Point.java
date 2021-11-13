@@ -1,3 +1,4 @@
+package main;
 public class Point {
     /************************ Attributes *************************/
     protected double x;

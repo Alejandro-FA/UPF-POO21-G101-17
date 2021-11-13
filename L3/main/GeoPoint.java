@@ -1,3 +1,4 @@
+package main;
 public class GeoPoint extends Point {
     protected String name;
 

@@ -1,73 +1,62 @@
-Kiribati;Oceania
-Tonga;Oceania
-French Polynesia;Oceania
-New Caledonia;Oceania
-American Samoa;Oceania
-Fiji;Oceania
-Ashmore and Cartier Islands;Oceania
-Palau;Oceania
-Guam;Oceania
-Wallis and Futuna;Oceania
-Australia;Oceania
-Northern Mariana Islands;Oceania
-Heard Island and McDonald Islands;Oceania
-Niue;Oceania
-Solomon Islands;Oceania
-Cook Islands;Oceania
-Marshall Islands;Oceania
-Coral Sea Islands;Oceania
-Nauru;Oceania
-Pitcairn Islands;Oceania
-Federated States of Micronesia;Oceania
-Vanuatu;Oceania
-New Zealand;Oceania
-Tuvalu;Oceania
-Papua New Guinea;Oceania
-Norfolk Island;Oceania
-Samoa;Oceania
-Honduras;NorthAmerica
-Saint Kitts and Nevis;NorthAmerica
-Haiti;NorthAmerica
-Bermuda;NorthAmerica
-Guatemala;NorthAmerica
-Saint Pierre and Miquelon;NorthAmerica
-United States Minor Outlying Islands;NorthAmerica
-Costa Rica;NorthAmerica
-Curaçao;NorthAmerica
-Dominica;NorthAmerica
-Clipperton Island;NorthAmerica
-Serranilla Bank;NorthAmerica
-Saint Barthelemy;NorthAmerica
-Bajo Nuevo Bank (Petrel Is.);NorthAmerica
-United States of America;NorthAmerica
-Dominican Republic;NorthAmerica
-Jamaica;NorthAmerica
-Belize;NorthAmerica
-Nicaragua;NorthAmerica
-The Bahamas;NorthAmerica
-Sint Maarten;NorthAmerica
-Puerto Rico;NorthAmerica
-British Virgin Islands;NorthAmerica
-Mexico;NorthAmerica
-US Naval Base Guantanamo Bay;NorthAmerica
-United States Virgin Islands;NorthAmerica
-Saint Vincent and the Grenadines;NorthAmerica
-Montserrat;NorthAmerica
-Panama;NorthAmerica
-Saint Lucia;NorthAmerica
-Greenland;NorthAmerica
-Grenada;NorthAmerica
-Cuba;NorthAmerica
-Cayman Islands;NorthAmerica
-El Salvador;NorthAmerica
-Barbados;NorthAmerica
-Turks and Caicos Islands;NorthAmerica
-Saint Martin;NorthAmerica
-Trinidad and Tobago;NorthAmerica
-Canada;NorthAmerica
-Aruba;NorthAmerica
-Anguilla;NorthAmerica
-Antigua and Barbuda;NorthAmerica
+Kenya;Africa
+Botswana;Africa
+Benin;Africa
+Tunisia;Africa
+Mauritius;Africa
+Namibia;Africa
+Zambia;Africa
+Ghana;Africa
+Gabon;Africa
+Malawi;Africa
+South Sudan;Africa
+Libya;Africa
+Morocco;Africa
+Somaliland;Africa
+Seychelles;Africa
+Liberia;Africa
+Zimbabwe;Africa
+Swaziland;Africa
+Sudan;Africa
+Lesotho;Africa
+Mali;Africa
+Central African Republic;Africa
+Nigeria;Africa
+Somalia;Africa
+French Southern and Antarctic Lands;Africa
+Sao Tome and Principe;Africa
+Algeria;Africa
+Mozambique;Africa
+Angola;Africa
+Senegal;Africa
+Ethiopia;Africa
+Togo;Africa
+Comoros;Africa
+Uganda;Africa
+Chad;Africa
+Cape Verde;Africa
+Niger;Africa
+Gambia;Africa
+Guinea;Africa
+Saint Helena;Africa
+South Africa;Africa
+Cameroon;Africa
+Equatorial Guinea;Africa
+Sierra Leone;Africa
+Ivory Coast;Africa
+Madagascar;Africa
+Western Sahara;Africa
+Democratic Republic of the Congo;Africa
+Mauritania;Africa
+United Republic of Tanzania;Africa
+Rwanda;Africa
+Egypt;Africa
+Eritrea;Africa
+Burkina Faso;Africa
+Djibouti;Africa
+Guinea Bissau;Africa
+Burundi;Africa
+Republic of Congo;Africa
+Antarctica;Antartica
 Bhutan;Asia
 Afghanistan;Asia
 Syria;Asia
@@ -78,6 +67,7 @@ Yemen;Asia
 North Korea;Asia
 British Indian Ocean Territory;Asia
 Nepal;Asia
+Georgia;Asia
 East Timor;Asia
 Kuwait;Asia
 Malaysia;Asia
@@ -137,7 +127,6 @@ Ukraine;Europe
 France;Europe
 Jersey;Europe
 Moldova;Europe
-Georgia;Asia
 Belgium;Europe
 Gibraltar;Europe
 Turkey;Europe
@@ -180,6 +169,76 @@ Malta;Europe
 Greece;Europe
 Akrotiri Sovereign Base Area;Europe
 Iceland;Europe
+Honduras;NorthAmerica
+Saint Kitts and Nevis;NorthAmerica
+Haiti;NorthAmerica
+Bermuda;NorthAmerica
+Guatemala;NorthAmerica
+Saint Pierre and Miquelon;NorthAmerica
+United States Minor Outlying Islands;NorthAmerica
+Costa Rica;NorthAmerica
+Curaçao;NorthAmerica
+Dominica;NorthAmerica
+Clipperton Island;NorthAmerica
+Serranilla Bank;NorthAmerica
+Saint Barthelemy;NorthAmerica
+Bajo Nuevo Bank (Petrel Is.);NorthAmerica
+United States of America;NorthAmerica
+Dominican Republic;NorthAmerica
+Jamaica;NorthAmerica
+Belize;NorthAmerica
+Nicaragua;NorthAmerica
+The Bahamas;NorthAmerica
+Sint Maarten;NorthAmerica
+Puerto Rico;NorthAmerica
+British Virgin Islands;NorthAmerica
+Mexico;NorthAmerica
+US Naval Base Guantanamo Bay;NorthAmerica
+United States Virgin Islands;NorthAmerica
+Saint Vincent and the Grenadines;NorthAmerica
+Montserrat;NorthAmerica
+Panama;NorthAmerica
+Saint Lucia;NorthAmerica
+Greenland;NorthAmerica
+Grenada;NorthAmerica
+Cuba;NorthAmerica
+Cayman Islands;NorthAmerica
+El Salvador;NorthAmerica
+Barbados;NorthAmerica
+Turks and Caicos Islands;NorthAmerica
+Saint Martin;NorthAmerica
+Trinidad and Tobago;NorthAmerica
+Canada;NorthAmerica
+Aruba;NorthAmerica
+Anguilla;NorthAmerica
+Antigua and Barbuda;NorthAmerica
+Kiribati;Oceania
+Tonga;Oceania
+French Polynesia;Oceania
+New Caledonia;Oceania
+American Samoa;Oceania
+Fiji;Oceania
+Ashmore and Cartier Islands;Oceania
+Palau;Oceania
+Guam;Oceania
+Wallis and Futuna;Oceania
+Australia;Oceania
+Northern Mariana Islands;Oceania
+Heard Island and McDonald Islands;Oceania
+Niue;Oceania
+Solomon Islands;Oceania
+Cook Islands;Oceania
+Marshall Islands;Oceania
+Coral Sea Islands;Oceania
+Nauru;Oceania
+Pitcairn Islands;Oceania
+Federated States of Micronesia;Oceania
+Vanuatu;Oceania
+New Zealand;Oceania
+Tuvalu;Oceania
+Papua New Guinea;Oceania
+Norfolk Island;Oceania
+Samoa;Oceania
 Guyana;SouthAmerica
 Falkland Islands;SouthAmerica
 Brazil;SouthAmerica
@@ -194,62 +253,3 @@ South Georgia and South Sandwich Islands;SouthAmerica
 Peru;SouthAmerica
 Chile;SouthAmerica
 Paraguay;SouthAmerica
-Antarctica;Antartica
-Kenya;Africa
-Botswana;Africa
-Benin;Africa
-Tunisia;Africa
-Mauritius;Africa
-Namibia;Africa
-Zambia;Africa
-Ghana;Africa
-Gabon;Africa
-Malawi;Africa
-South Sudan;Africa
-Libya;Africa
-Morocco;Africa
-Somaliland;Africa
-Seychelles;Africa
-Liberia;Africa
-Zimbabwe;Africa
-Swaziland;Africa
-Sudan;Africa
-Lesotho;Africa
-Mali;Africa
-Central African Republic;Africa
-Nigeria;Africa
-Somalia;Africa
-French Southern and Antarctic Lands;Africa
-Sao Tome and Principe;Africa
-Algeria;Africa
-Mozambique;Africa
-Angola;Africa
-Senegal;Africa
-Ethiopia;Africa
-Togo;Africa
-Comoros;Africa
-Uganda;Africa
-Chad;Africa
-Cape Verde;Africa
-Niger;Africa
-Gambia;Africa
-Guinea;Africa
-Saint Helena;Africa
-South Africa;Africa
-Cameroon;Africa
-Equatorial Guinea;Africa
-Sierra Leone;Africa
-Ivory Coast;Africa
-Madagascar;Africa
-Western Sahara;Africa
-Democratic Republic of the Congo;Africa
-Mauritania;Africa
-United Republic of Tanzania;Africa
-Rwanda;Africa
-Egypt;Africa
-Eritrea;Africa
-Burkina Faso;Africa
-Djibouti;Africa
-Guinea Bissau;Africa
-Burundi;Africa
-Republic of Congo;Africa

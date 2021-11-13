@@ -10,9 +10,10 @@ public class CityFiles {
     public static final String newline = System.lineSeparator();
     public static final String fs = File.separator;
     public static final String defaultFolder = "assets";
+    public static final String defaultPath = "cities.csv";
 
-    // Write the specified city to the specified filePath with CSV format
-    public static void writeTo(String filePath, boolean append, String cityName, int numInhab, double latitude, double longitude) {
+    // Write the specified city to the specified country with CSV format
+    private static void writeTo(String filePath, boolean append, String cityName, int numInhab, double latitude, double longitude) {
         try {
             FileWriter file = new FileWriter(filePath, append); // true tells to append data.
             file.write(cityName + csvDelimiter + numInhab + csvDelimiter + latitude + csvDelimiter + longitude + newline);
@@ -41,7 +42,7 @@ public class CityFiles {
         
         // Write city to the corresponding files
         for(String country: dict.keySet()) {
-            writeTo(defaultFolder + fs + dict.get(country) + fs + country + fs + "cities.csv", append, cityName, numInhab, latitude, longitude);
+            writeTo(defaultFolder + fs + dict.get(country) + fs + country + fs + defaultPath, append, cityName, numInhab, latitude, longitude);
             System.out.println(cityName + " written to " + country + " successfully");
         }
     }

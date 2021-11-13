@@ -23,7 +23,7 @@ public class CheckFormat {
                     Scanner scan = new Scanner(pf);
                     while ( scan.hasNext() && testPassed == true) {
                         String s = scan.nextLine();
-                        testPassed = s.matches(point_pattern);
+                        if ( pf.getName().startsWith(country) ) testPassed = s.matches(point_pattern);
                     }
                     scan.close();
                     if (testPassed) polygTested++;

@@ -1,4 +1,5 @@
 package input;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -7,6 +8,8 @@ import java.util.Map;
 public class CityFiles {
     public static final String csvDelimiter = ";";
     public static final String newline = System.lineSeparator();
+    public static final String fs = File.separator;
+    public static final String defaultFolder = "assets";
 
     // Write the specified city to the specified filePath with CSV format
     public static void writeTo(String filePath, boolean append, String cityName, int numInhab, double latitude, double longitude) {
@@ -38,7 +41,7 @@ public class CityFiles {
         
         // Write city to the corresponding files
         for(String country: dict.keySet()) {
-            writeTo(dict.get(country) + "/" + country + "/" + "cities.csv", append, cityName, numInhab, latitude, longitude);
+            writeTo(defaultFolder + fs + dict.get(country) + fs + country + fs + "cities.csv", append, cityName, numInhab, latitude, longitude);
             System.out.println(cityName + " written to " + country + " successfully");
         }
     }

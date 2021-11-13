@@ -2,14 +2,16 @@ package input;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
-import java.io.File;
 import java.io.IOException;
 
 public class BorderFiles {
     public static final String csvDelimiter = ";";
     public static final String newline = System.lineSeparator();
+    public static final String fs = File.separator;
+    public static final String defaultFolder = "assets";
 
     // Convert the countries.geojson file available in https://datahub.io/core/geo-countries to multiple .csv files
     public static void json2CSV(String geojsonPath) {
@@ -20,6 +22,7 @@ public class BorderFiles {
             Scanner fileScan = new Scanner(geojson);
             while (fileScan.hasNextLine()) {
                 String s = fileScan.nextLine();
+                // TODO: Parallelize process for better performance
                 String[] sArray = s.split("\"coordinates\": ", 2);
 
                 if (sArray.length > 1) { // True if the line contains the substring <"coordinates": >
@@ -27,7 +30,7 @@ public class BorderFiles {
                     System.out.println("Writing " + countryName + " files...");
                     String polygonType = sArray[0].split("\"geometry\": [{] \"type\": \"", 2)[1].split("\"", 2)[0];
                     String rawCoords = sArray[1]; // Get coordinates
-                    String basePath = dict.get(countryName) + "/" + countryName + "/" + countryName;
+                    String basePath = defaultFolder + fs + dict.get(countryName) + fs + countryName + fs + countryName;
                     
                     // Parse coordinates and write them to a new file with CSV format
                     if ( polygonType.equals("MultiPolygon") ) {
@@ -81,7 +84,7 @@ public class BorderFiles {
         File file = new File(filePath);
         file.getParentFile().mkdirs(); // Create parent directories if missing
         try {
-            FileWriter output = new FileWriter(file);
+            FileWriter output = new FileWriter(file, false); // false is for overriding instead of appending data
             output.write(coords);
             output.write(newline); // Adds a trailing newline for CSV format recommendations compliance
             output.close();

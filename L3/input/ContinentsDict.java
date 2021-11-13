@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class ContinentsDict {
-    public static final String defaultPath = "continents-dict.csv";
+    public static final String fs = File.separator;
+    public static final String defaultFolder = "assets";
+    public static final String defaultPath = defaultFolder + fs + "continents-dict.csv";
     public static final String csvDelimiter = ";";
     public static String newline = System.lineSeparator();
 
@@ -39,11 +41,11 @@ public class ContinentsDict {
     @Deprecated
     public static void main(String[] args) {
         try {
-            FileWriter dictFile = new FileWriter(defaultPath, false);
-            String continents[] = {"Oceania", "NorthAmerica", "Asia", "Europe", "SouthAmerica", "Antartica", "Africa"};
+            FileWriter dictFile = new FileWriter(defaultPath, false); // false is for overriding instead of appending data
+            String continents[] = {"Africa", "Antartica", "Asia", "Europe", "NorthAmerica", "Oceania", "SouthAmerica"};
     
             for(String continent: continents) {
-                File continent_folder = new File(continent);
+                File continent_folder = new File(defaultFolder + fs + continent);
                 String countries[] = continent_folder.list(); //We get the name of each sub-directory
     
                 for(String country: countries)

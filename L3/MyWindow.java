@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class MyWindow extends javax.swing.JFrame {
 
@@ -11,64 +12,78 @@ public class MyWindow extends javax.swing.JFrame {
     }
 
     public static void main( String[] args ) {
-        // Regions coordinates
-        double yscale = 1.8;
+        String point_pattern = "[ ]*[+-]?[0-9]*[.]?[0-9]* [+-]?[0-9]*[.]?[0-9]*[ ]*"; // Two doubles separated by a whitespace
+        // City name (accepts composite names like South Africa) + num_inhabitants + point
+        String city_pattern = "[ ]*([A-Z][a-z]*[.]?[ ]?)+" + "[ ]" + "[0-9]+" + point_pattern;
 
-        Point[] can_points = {new Point(278,436/yscale), new Point(125,452/yscale), new Point(59,288/yscale), new Point(259,295/yscale)};
-        Point[] usa_points = {new Point(278, 436/yscale), new Point(125, 452/yscale), new Point(204, 634/yscale)};
-        Point[] bra_points = {new Point(204,634/yscale), new Point(250,808/yscale), new Point(316,798/yscale)};
-        Point[] arg_points = {new Point(250, 808/yscale), new Point(316, 798/yscale), new Point(258, 992/yscale)};
-        Point[] sudaf_points = {new Point(493, 804/yscale), new Point(454, 630/yscale), new Point(547, 605/yscale)};
-        Point[] alger_points = {new Point(454, 630/yscale), new Point(547, 605/yscale), new Point(542, 511/yscale), new Point(423, 489/yscale)};
-        Point[] cat_points = {new Point(429,477/yscale), new Point(527,454/yscale), new Point(517, 276/yscale)};
-        Point[] russ_points = {new Point(527, 454/yscale), new Point(517, 276/yscale), new Point(875, 237/yscale), new Point(700, 632/yscale)};
+        // Input. Each continent is stored in a separate .txt file
+        File folder = new File("resources");
+        File[] files = folder.listFiles();
+        List<Continent> continents = new LinkedList<Continent>();
 
-        List<Point> can_coords = Arrays.asList(can_points);
-        List<Point> usa_coords = Arrays.asList(usa_points);
-        List<Point> bra_coords = Arrays.asList(bra_points);
-        List<Point> arg_coords = Arrays.asList(arg_points);
-        List<Point> sudaf_coords = Arrays.asList(sudaf_points);
-        List<Point> alger_coords = Arrays.asList(alger_points);
-        List<Point> cat_coords = Arrays.asList(cat_points);
-        List<Point> russ_coords = Arrays.asList(russ_points);
+        for (File continentFile: files) {
+            try {
+                // Open scanner and change the delimiter to a newline
+                Scanner file_scan = new Scanner(continentFile);
+                file_scan.useDelimiter("\n");
 
-        // Regions or countries
-        PolygonalRegion can = new PolygonalRegion(can_coords);
-        PolygonalRegion usa = new PolygonalRegion(usa_coords);
-        PolygonalRegion bra = new PolygonalRegion(bra_coords);
-        PolygonalRegion arg = new PolygonalRegion(arg_coords);
-        PolygonalRegion sudaf = new PolygonalRegion(sudaf_coords);
-        PolygonalRegion alger = new PolygonalRegion(alger_coords);
-        PolygonalRegion cat = new PolygonalRegion(cat_coords);
-        PolygonalRegion russ = new PolygonalRegion(russ_coords);
-        
-        // Continents
-        LinkedList<PolygonalRegion> na_regions = new LinkedList<PolygonalRegion>();
-        LinkedList<PolygonalRegion> sa_regions = new LinkedList<PolygonalRegion>();
-        LinkedList<PolygonalRegion> af_regions = new LinkedList<PolygonalRegion>();
-        LinkedList<PolygonalRegion> euas_regions = new LinkedList<PolygonalRegion>();
+                // Read all countries of the continent
+                List<Country> countries = new LinkedList<Country>();
+                while (file_scan.hasNext()) { // Check if there is another country name
+                    String name = file_scan.nextLine();
 
-        na_regions.add(can);
-        na_regions.add(usa);
-        sa_regions.add(bra);
-        sa_regions.add(arg);
-        af_regions.add(sudaf);
-        af_regions.add(alger);
-        euas_regions.add(cat);
-        euas_regions.add(russ);
-        
-        Continent nAmerica = new Continent(na_regions);
-        Continent sAmerica = new Continent(sa_regions);
-        Continent africa = new Continent(af_regions);
-        Continent euAsia = new Continent(euas_regions);
+                    // Read all points of the country border
+                    List<Point> points = new LinkedList<Point>();
+                    while ( file_scan.hasNext(point_pattern) ) { // Check if there are more points that define the border
+                        String str = file_scan.nextLine();
+                        Scanner str_scan = new Scanner(str);
+                        double longitude = str_scan.nextDouble();
+                        double latitude = str_scan.nextDouble();
+                        str_scan.close();
+                        points.add( MyMap.webMercatorProj(latitude, longitude) );
+                    }
+
+                    // Read cities
+                    List<City> cities = new LinkedList<City>();
+                    while ( file_scan.hasNext(city_pattern)){
+                        String str = file_scan.nextLine();
+                        Scanner str_scan = new Scanner(str);
+                        String city_name = "";
+                        while(str_scan.hasNextInt()==false){
+                            city_name = city_name + " " + str_scan.next();                       
+                        }
+                        int habitants = str_scan.nextInt();
+                        double latitude = str_scan.nextDouble();
+                        double longitude = str_scan.nextDouble();
+
+                        Point p = MyMap.webMercatorProj(latitude, longitude);
+                        cities.add(new City(p.getX(), p.getY(), city_name, habitants));
+                        str_scan.close();
+                    }
+
+                    // Add country to the list. The capital is the first city
+                    if (points.isEmpty() == false && cities.isEmpty() == false) {
+                        Country c = new Country(points, name, cities.get(0));
+                        countries.add(c);
+                        for(City city: cities){
+                            c.addCity(city);
+                        }
+                    }
+                }
+
+                // Add new continent to the list of continents
+                if (countries.isEmpty() == false) continents.add( new Continent(countries) );
+                
+                // Close file
+                file_scan.close();
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
         
         // World
-        LinkedList<Continent> world_conts = new LinkedList<Continent>();
-        world_conts.add(nAmerica);
-        world_conts.add(sAmerica);
-        world_conts.add(africa);
-        world_conts.add(euAsia);
-        World world = new World(world_conts);
+        World world = new World(continents);
 
         // Original content
         java.awt.EventQueue.invokeLater( new Runnable() {
@@ -81,6 +96,5 @@ public class MyWindow extends javax.swing.JFrame {
             }
         } );
     }
-
 }
 

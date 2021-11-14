@@ -26,5 +26,6 @@ public class World {
             c.draw(g);
             i++;
         }
+        System.out.println(System.lineSeparator() + "Success! World drawn.");
     }
 }

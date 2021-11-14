@@ -36,6 +36,8 @@ public class MyWindow extends javax.swing.JFrame {
         int iTotal = dict.size();
 
         for (String countryName: dict.keySet()) {
+            if (i > 0) break;
+
             String continentName = dict.get(countryName);
             String basePath = ContinentsDict.defaultFolder + fs + continentName + fs + countryName;
             File country_folder = new File(basePath);
@@ -94,6 +96,8 @@ public class MyWindow extends javax.swing.JFrame {
                 for(City city: cities) country.addCity(city);
                 System.out.println(countryName + " country instance created (" + i + "/" + iTotal + ")");
             }
+
+            i++;
         }
 
         List<Continent> continentsList = new LinkedList<Continent>();

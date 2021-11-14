@@ -45,7 +45,7 @@ public class MyWindow extends javax.swing.JFrame {
                 // If file contains city data:
                 if ( region.getName() == CityFiles.defaultPath ) {
                     try {
-                        Scanner city_scan = new Scanner(basePath + fs + region);
+                        Scanner city_scan = new Scanner(region);
                         city_scan.useDelimiter("[" + csv_City + newline + "]");
                         while (city_scan.hasNext()){
                             String name = city_scan.next();
@@ -64,7 +64,7 @@ public class MyWindow extends javax.swing.JFrame {
                 // Else file contains border data:
                 } else {
                     try {
-                        Scanner scan = new Scanner(basePath + region);
+                        Scanner scan = new Scanner(region);
                         scan.useDelimiter("[" + csv_Border + newline + "]"); // Specify possible delimiters
                         List<Point> points = new LinkedList<Point>(); // Initialize list of points;
                         while (scan.hasNext()) {
@@ -109,7 +109,7 @@ public class MyWindow extends javax.swing.JFrame {
                 w.setVisible( true );
                 w.pack();
             }
-        }
+        } );
     }
 }
 

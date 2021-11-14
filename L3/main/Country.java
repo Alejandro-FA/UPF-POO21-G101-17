@@ -2,16 +2,17 @@ package main;
 import java.util.List;
 import java.util.LinkedList;
 
-public class Country extends PolygonalRegion{
+public class Country{
     /************************ Attributes *************************/
     private String name;
     private List<City> cities;
     private List<Country> neighbors;
     private City capital;
+    private List<PolygonalRegion> regions;
 
     /************************ Constructor ************************/
-    public Country(List<Point> points, String name, City capital) {
-        super(points);
+    public Country(List<PolygonalRegion> regions, String name, City capital) {
+        this.regions = regions;
         this.name = name;
         this.capital = capital;
 
@@ -29,5 +30,17 @@ public class Country extends PolygonalRegion{
         neighbors.add(c);
     }
 
-    // No need to write a draw() method. Right? Because we directly use the one of the super class.
+    public void draw(java.awt.Graphics g){
+        for(PolygonalRegion region: regions){
+            region.draw(g);
+        }
+    }
+
+    public double getArea(){
+        double area = 0;
+        for(PolygonalRegion region: regions){
+            area += region.getArea();
+        }
+        return area;
+    }
 }

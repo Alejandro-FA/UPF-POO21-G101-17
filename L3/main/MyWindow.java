@@ -1,8 +1,19 @@
 package main;
+import input.ContinentsDict;
+import input.CityFiles;
+import input.BorderFiles;
 import java.util.*;
+import java.io.File;
+
+import javax.swing.border.Border;
+
 import java.io.*;
 
 public class MyWindow extends javax.swing.JFrame {
+    private static final String fs = File.separator;
+    private static final String csv_Border = BorderFiles.csvDelimiter;
+    private static final String csv_City = CityFiles.csvDelimiter;
+    private static final String newline = System.lineSeparator();
 
     public MyWindow() {
         initComponents();
@@ -13,78 +24,81 @@ public class MyWindow extends javax.swing.JFrame {
     }
 
     public static void main( String[] args ) {
-        String point_pattern = "[ ]*[+-]?[0-9]*[.]?[0-9]* [+-]?[0-9]*[.]?[0-9]*[ ]*"; // Two doubles separated by a whitespace
-        // City name (accepts composite names like South Africa) + num_inhabitants + point
-        String city_pattern = "[ ]*([A-Z][a-z]*[.]?[ ]?)+" + "[ ]" + "[0-9]+" + point_pattern;
-
-        // Input. Each continent is stored in a separate .txt file
-        File folder = new File("resources");
-        File[] files = folder.listFiles();
-        List<Continent> continents = new LinkedList<Continent>();
-
-        for (File continentFile: files) {
-            try {
-                // Open scanner and change the delimiter to a newline
-                Scanner file_scan = new Scanner(continentFile);
-                file_scan.useDelimiter("\n");
-
-                // Read all countries of the continent
-                List<Country> countries = new LinkedList<Country>();
-                while (file_scan.hasNext()) { // Check if there is another country name
-                    String name = file_scan.nextLine();
-
-                    // Read all points of the country border
-                    List<Point> points = new LinkedList<Point>();
-                    while ( file_scan.hasNext(point_pattern) ) { // Check if there are more points that define the border
-                        String str = file_scan.nextLine();
-                        Scanner str_scan = new Scanner(str);
-                        double longitude = str_scan.nextDouble();
-                        double latitude = str_scan.nextDouble();
-                        str_scan.close();
-                        points.add( MyMap.webMercatorProj(latitude, longitude) );
-                    }
-
-                    // Read cities
-                    List<City> cities = new LinkedList<City>();
-                    while ( file_scan.hasNext(city_pattern)){
-                        String str = file_scan.nextLine();
-                        Scanner str_scan = new Scanner(str);
-                        String city_name = "";
-                        while(str_scan.hasNextInt()==false){
-                            city_name = city_name + " " + str_scan.next();                       
-                        }
-                        int habitants = str_scan.nextInt();
-                        double latitude = str_scan.nextDouble();
-                        double longitude = str_scan.nextDouble();
-
-                        Point p = MyMap.webMercatorProj(latitude, longitude);
-                        cities.add(new City(p.getX(), p.getY(), city_name, habitants));
-                        str_scan.close();
-                    }
-
-                    // Add country to the list. The capital is the first city
-                    if (points.isEmpty() == false && cities.isEmpty() == false) {
-                        Country c = new Country(points, name, cities.get(0));
-                        countries.add(c);
-                        for(City city: cities){
-                            c.addCity(city);
-                        }
-                    }
-                }
-
-                // Add new continent to the list of continents
-                if (countries.isEmpty() == false) continents.add( new Continent(countries) );
-                
-                // Close file
-                file_scan.close();
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+        /* Input. All the country names (and its corresponding continent) are stored in
+        a separate file for convenience. */
+        Map<String, String> dict = ContinentsDict.read();
+        Map<String, LinkedList<Country>> continents = new HashMap<String, LinkedList<Country>>();
+        for (String cont: dict.values()) {
+            continents.put(cont, new LinkedList<Country>()); 
         }
         
+        for (String countryName: dict.keySet()) {
+            String continentName = dict.get(countryName);
+            String basePath = ContinentsDict.defaultFolder + fs + continentName + fs + countryName;
+            File country_folder = new File(basePath);
+            File[] regionsFiles = country_folder.listFiles();
+            
+            List<City> cities = new LinkedList<City>();
+            List<PolygonalRegion> regions = new LinkedList<PolygonalRegion>();
+
+            for (File region: regionsFiles) {
+                // If file contains city data:
+                if ( region.getName() == CityFiles.defaultPath ) {
+                    try {
+                        Scanner city_scan = new Scanner(basePath + fs + region);
+                        city_scan.useDelimiter("[" + csv_City + newline + "]");
+                        while (city_scan.hasNext()){
+                            String name = city_scan.next();
+                            int habitants = city_scan.nextInt();
+                            double latitude = city_scan.nextDouble();
+                            double longitude = city_scan.nextDouble();
+                            Point p = MyMap.webMercatorProj(latitude, longitude);
+                            cities.add(new City(p.getX(), p.getY(), name, habitants) );
+                        }
+                        city_scan.close();
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Error when reading " + basePath + fs + CityFiles.defaultPath);
+                        e.printStackTrace();
+                    }
+
+                // Else file contains border data:
+                } else {
+                    try {
+                        Scanner scan = new Scanner(basePath + region);
+                        scan.useDelimiter("[" + csv_Border + newline + "]"); // Specify possible delimiters
+                        List<Point> points = new LinkedList<Point>(); // Initialize list of points;
+                        while (scan.hasNext()) {
+                            double longitude = scan.nextDouble();
+                            double latitude = scan.nextDouble();
+                            Point p = MyMap.webMercatorProj(latitude, longitude);
+                            points.add(p);
+                        }
+                        scan.close();
+                        regions.add( new PolygonalRegion(points) );
+                        
+                    } catch (Exception e) {
+                        System.out.println("Error when reading " + basePath + fs + region.getName());
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            // Add country to the list. The capital is the first city
+            if (regions.isEmpty() == false && cities.isEmpty() == false) {
+                City capital = cities.get(0);
+                Country country = new Country(regions, countryName, capital);
+                continents.get(continentName).add(country);
+                for(City city: cities) country.addCity(city);
+            }
+        }
+
+        List<Continent> continentsList = new LinkedList<Continent>();
+        for ( List<Country> countriesList: continents.values() ) {
+            continentsList.add( new Continent(countriesList) );
+        }
+            
         // World
-        World world = new World(continents);
+        World world = new World(continentsList);
 
         // Original content
         java.awt.EventQueue.invokeLater( new Runnable() {
@@ -95,7 +109,7 @@ public class MyWindow extends javax.swing.JFrame {
                 w.setVisible( true );
                 w.pack();
             }
-        } );
+        }
     }
 }
 

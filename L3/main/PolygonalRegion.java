@@ -23,13 +23,14 @@ public class PolygonalRegion {
             Point pi = points.get(i);
             Point pj = points.get(i+1);
 
-            area += pi.getX()*pj.getY() - pi.getY()*pj.getX();
+            area += -pi.getY()*pj.getX() + pi.getX()*pj.getY();
         }
 
         // Last element is computed separately, since it is different
         Point p1 = points.get(0);
         Point pn = points.get(last_idx);
-        return 0.5 * ( area + pn.getX()*p1.getY() - pn.getY()*p1.getX() );
+        area += -pn.getY()*p1.getX() + pn.getX()*p1.getY();
+        return 0.5 * Math.abs(area);
     }
 
     /* For now we are going to assume that the points are ordered in order to draw the 

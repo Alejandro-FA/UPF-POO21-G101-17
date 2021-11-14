@@ -24,7 +24,7 @@ public class MyWindow extends javax.swing.JFrame {
     }
 
     public static void main( String[] args ) {
-        int maxCountries = 0;
+        int maxCountries = 1000;
 
         /* Input. All the country names (and its corresponding continent) are stored in
         a separate file for convenience. */

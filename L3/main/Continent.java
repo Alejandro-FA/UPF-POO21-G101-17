@@ -12,7 +12,10 @@ public class Continent {
 
     /************************ Methods *************************/
     public void draw(java.awt.Graphics g){
-        for (Country c: countries) c.draw(g);
+        for (Country c: countries) {
+            System.out.println("Drawing " + c.getName() + "...");
+            c.draw(g);
+        }
     }
 
     public double getTotalArea(){

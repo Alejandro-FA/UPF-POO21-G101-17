@@ -43,4 +43,12 @@ public class Country{
         }
         return area;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public City getCapital() {
+        return capital;
+    }
 }

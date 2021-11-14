@@ -43,7 +43,7 @@ public class MyWindow extends javax.swing.JFrame {
 
             for (File region: regionsFiles) {
                 // If file contains city data:
-                if ( region.getName() == CityFiles.defaultPath ) {
+                if ( region.getName().equals(CityFiles.defaultPath) ) {
                     try {
                         Scanner city_scan = new Scanner(region);
                         city_scan.useDelimiter("[" + csv_City + newline + "]");
@@ -89,6 +89,7 @@ public class MyWindow extends javax.swing.JFrame {
                 Country country = new Country(regions, countryName, capital);
                 continents.get(continentName).add(country);
                 for(City city: cities) country.addCity(city);
+                System.out.println(countryName + "country instance created.");
             }
         }
 
@@ -99,6 +100,7 @@ public class MyWindow extends javax.swing.JFrame {
             
         // World
         World world = new World(continentsList);
+        System.out.println("World instance created. Drawing map...");
 
         // Original content
         java.awt.EventQueue.invokeLater( new Runnable() {

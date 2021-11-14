@@ -24,19 +24,17 @@ public class MyWindow extends javax.swing.JFrame {
     }
 
     public static void main( String[] args ) {
+        int maxCountries = 0;
+
         /* Input. All the country names (and its corresponding continent) are stored in
         a separate file for convenience. */
         Map<String, String> dict = ContinentsDict.read();
         Map<String, LinkedList<Country>> continents = new HashMap<String, LinkedList<Country>>();
-        for (String cont: dict.values()) {
-            continents.put(cont, new LinkedList<Country>()); 
-        }
-        
         int i = 0;
         int iTotal = dict.size();
 
         for (String countryName: dict.keySet()) {
-            if (i > 0) break;
+            if (i >= maxCountries) break;
 
             String continentName = dict.get(countryName);
             String basePath = ContinentsDict.defaultFolder + fs + continentName + fs + countryName;
@@ -92,6 +90,7 @@ public class MyWindow extends javax.swing.JFrame {
             if (regions.isEmpty() == false && cities.isEmpty() == false) {
                 City capital = cities.get(0);
                 Country country = new Country(regions, countryName, capital);
+                if (continents.containsKey(continentName) == false) continents.put(continentName, new LinkedList<Country>()); 
                 continents.get(continentName).add(country);
                 for(City city: cities) country.addCity(city);
                 System.out.println(countryName + " country instance created (" + i + "/" + iTotal + ")");

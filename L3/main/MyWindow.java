@@ -32,6 +32,9 @@ public class MyWindow extends javax.swing.JFrame {
             continents.put(cont, new LinkedList<Country>()); 
         }
         
+        int i = 0;
+        int iTotal = dict.size();
+
         for (String countryName: dict.keySet()) {
             String continentName = dict.get(countryName);
             String basePath = ContinentsDict.defaultFolder + fs + continentName + fs + countryName;
@@ -89,7 +92,7 @@ public class MyWindow extends javax.swing.JFrame {
                 Country country = new Country(regions, countryName, capital);
                 continents.get(continentName).add(country);
                 for(City city: cities) country.addCity(city);
-                System.out.println(countryName + "country instance created.");
+                System.out.println(countryName + " country instance created (" + i + "/" + iTotal + ")");
             }
         }
 
@@ -100,7 +103,7 @@ public class MyWindow extends javax.swing.JFrame {
             
         // World
         World world = new World(continentsList);
-        System.out.println("World instance created. Drawing map...");
+        System.out.println(newline + "World instance created. Drawing map..." + newline);
 
         // Original content
         java.awt.EventQueue.invokeLater( new Runnable() {

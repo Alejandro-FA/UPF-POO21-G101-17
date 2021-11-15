@@ -2,8 +2,8 @@ package main;
 public class MyMap extends javax.swing.JPanel {
     /************************ Attributes *************************/
     private World world;
-    public static final int xdim = 1000;
-    public static final int ydim = 1000;
+    public static final int xdim = 700;
+    public static final int ydim = 700;
 
     /************************ Constructor ************************/
     public MyMap(World world) {
@@ -36,8 +36,8 @@ public class MyMap extends javax.swing.JPanel {
         latitude = (latitude / 180) * Math.PI;
         longitude = (longitude / 180) * Math.PI;
 
-        double x = Math.floor( (xdim-1)/(2*Math.PI) * Math.pow(2, zoomLevel) * (longitude + Math.PI) );
-        double y = Math.floor( (ydim-1)/(2*Math.PI) * Math.pow(2, zoomLevel) * (Math.PI - Math.log( Math.tan(Math.PI/4 + latitude/2)) ) );
+        double x = Math.floor( xdim/(2*Math.PI) * Math.pow(2, zoomLevel) * (longitude + Math.PI) );
+        double y = Math.floor( ydim/(2*Math.PI) * Math.pow(2, zoomLevel) * (Math.PI - Math.log( Math.tan(Math.PI/4 + latitude/2)) ) );
 
         // double x = xdim/(2*Math.PI) * Math.pow(2, zoomLevel) * (longitude + Math.PI);
         // double y = ydim/(2*Math.PI) * Math.pow(2, zoomLevel) * (Math.PI - Math.log( Math.tan(Math.PI/4 + latitude/2)) );

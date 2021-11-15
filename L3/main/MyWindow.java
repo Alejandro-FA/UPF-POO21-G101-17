@@ -23,19 +23,42 @@ public class MyWindow extends javax.swing.JFrame {
         setDefaultCloseOperation( javax.swing.WindowConstants.EXIT_ON_CLOSE );
     }
 
-    public static void main( String[] args ) {
-        int maxCountries = 1000;
-
+    private static Map<String, String> selectInput(String[] args) {
         /* Input. All the country names (and its corresponding continent) are stored in
         a separate file for convenience. */
-        Map<String, String> dict = ContinentsDict.read();
+        if (args.length > 0) {
+            if ( args[0].equals("-s") || args[0].equals("--simple") ) {
+                String inputPath = "assets" + fs + "continents-dict-simple.csv";
+                System.out.println("Executing simple case. Reading dictionary of countries from " + inputPath + "..." + newline);
+                return ContinentsDict.read(inputPath);
+            }
+            else if ( args[0].equals("-t") || args[0].equals("--test") ) {
+                String inputPath = "assets" + fs + "continents-dict-test.csv";
+                System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + "..." + newline);
+                return ContinentsDict.read(inputPath);
+            }
+            else if ( args[0].equals("-c") || args[0].equals("--complex") ) {
+                String inputPath = "assets" + fs + "continents-dict.csv";
+                System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + "..." + newline);
+                return ContinentsDict.read(inputPath);
+            }
+        }
+        System.out.println("Warning. Execution mode not specified.");
+        System.out.println("Pass -s or --simple for executing a simple case.");
+        System.out.println("Pass -t or --test for executing a test case (just draws Italy).");
+        System.out.println("Pass -c or --complex for drawing the whole World.");
+        System.out.println("Executing simple case. Reading dictionary of countries from " + "assets" + fs + "continents-dict-simple.csv" + newline);
+        return ContinentsDict.read();
+    }
+
+    public static void main( String[] args ) {
+        Map<String, String> dict = selectInput(args);
         Map<String, LinkedList<Country>> continents = new HashMap<String, LinkedList<Country>>();
         int i = 0;
         int iTotal = dict.size();
 
         for (String countryName: dict.keySet()) {
-            if (i >= maxCountries) break;
-
+            System.out.println("Reading border coordinates of " + countryName + "...");
             String continentName = dict.get(countryName);
             String basePath = ContinentsDict.defaultFolder + fs + continentName + fs + countryName;
             File country_folder = new File(basePath);

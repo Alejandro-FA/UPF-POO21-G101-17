@@ -37,17 +37,38 @@ public class PolygonalRegion {
     polygon correctly. We could not assume this, but then we should implement some 
     procedure to order the list of pointss in such a way that the polygon is always drawn
     as it should.*/ 
+    // public void draw(java.awt.Graphics g) {
+    //     int n = points.size();
+    //     int[] x = new int[n];
+    //     int[] y = new int[n];
+
+    //     for (int i = 0; i < n; i++) {
+    //         Point p = points.get(i);
+    //         x[i] = (int) p.getX();
+    //         y[i] = (int) p.getY();
+    //     }
+
+    //     g.drawPolygon(x, y, n);
+    // }
+
     public void draw(java.awt.Graphics g) {
         int n = points.size();
-        int[] x = new int[n];
-        int[] y = new int[n];
 
-        for (int i = 0; i < n; i++) {
-            Point p = points.get(i);
-            x[i] = (int) p.getX();
-            y[i] = (int) p.getY();
+        for (int i = 0; i < (n-1); i++) {
+            Point p1 = points.get(i);
+            Point p2 = points.get(i+1);
+            int x1 = (int) p1.getX();
+            int y1 = (int) p1.getY();
+            int x2 = (int) p2.getX();
+            int y2 = (int) p2.getY();
+            g.drawLine(x1, y1, x2, y2);
         }
-
-        g.drawPolygon(x, y, n);
+        // Point pfirst = points.get(0);
+        // Point plast = points.get(n-1);
+        // int x1 = (int) plast.getX();
+        // int y1 = (int) plast.getY();
+        // int x2 = (int) pfirst.getX();
+        // int y2 = (int) pfirst.getY();
+        // g.drawLine(x1, y1, x2, y2);
     }
 }

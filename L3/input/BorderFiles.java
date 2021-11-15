@@ -34,7 +34,7 @@ public class BorderFiles {
                     
                     // Parse coordinates and write them to a new file with CSV format
                     if ( polygonType.equals("MultiPolygon") ) {
-                        String polygons[] = rawCoords.split(Pattern.quote("] ],")); // Split each separate polygon
+                        String polygons[] = rawCoords.split(Pattern.quote("\\] \\],")); // Split each separate polygon
                         for (int i = 0; i < polygons.length; i++) {
                             String parsedCoords = parseCoord(rawCoords);
                             writeCoords(basePath + "-" + i + ".csv", parsedCoords);
@@ -68,11 +68,11 @@ public class BorderFiles {
         coord = coord.substring(beginningChars);
 
         // Separate each point into a different line
-        coord = coord.replace(" ], ", newline); // If ']' is followed by a ',' -> new point
+        coord = coord.replace(" \\], ", newline); // If ']' is followed by a ',' -> new point
 
         // Remove the rest of the undesired characters
-        coord = coord.replace("[ ", ""); // Remove "[ "
-        coord = coord.replace(" ]", ""); // Remove " ]"
+        coord = coord.replace("\\[ ", ""); // Remove "[ "
+        coord = coord.replace(" \\]", ""); // Remove " ]"
 
         // Change separate latitude and longitude with a semiclon
         coord = coord.replace(", ", ";");

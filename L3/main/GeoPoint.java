@@ -1,4 +1,7 @@
 package main;
+
+import java.awt.Color;
+
 public class GeoPoint extends Point {
     protected String name;
 
@@ -10,8 +13,10 @@ public class GeoPoint extends Point {
     public void draw(java.awt.Graphics g){
         int xi = (int)x;
         int yi = (int)y;
-
-        g.fillOval(xi,  yi,  2,  2);
+        
+        g.fillOval(xi,  yi,  7,  7);
+        g.setColor(Color.BLUE);
         g.drawString(name, xi, yi);
+        g.setColor(Color.BLACK);
     }
 }

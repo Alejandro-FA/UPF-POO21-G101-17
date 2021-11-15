@@ -32,6 +32,7 @@ public class Country{
 
     public void draw(java.awt.Graphics g){
         for(PolygonalRegion region: regions) region.draw(g);
+        for(City city: cities) city.draw(g);
     }
 
     public double getArea(){

@@ -2,8 +2,8 @@ package main;
 public class MyMap extends javax.swing.JPanel {
     /************************ Attributes *************************/
     private World world;
-    public static final int xdim = 1400;
-    public static final int ydim = 1400;
+    public static final int xdim = 1500;
+    public static final int ydim = 1500;
 
     /************************ Constructor ************************/
     public MyMap(World world) {

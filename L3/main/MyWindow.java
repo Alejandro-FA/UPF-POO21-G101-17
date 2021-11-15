@@ -58,7 +58,6 @@ public class MyWindow extends javax.swing.JFrame {
         int iTotal = dict.size();
 
         for (String countryName: dict.keySet()) {
-            System.out.println("Reading border coordinates of " + countryName + "...");
             String continentName = dict.get(countryName);
             String basePath = ContinentsDict.defaultFolder + fs + continentName + fs + countryName;
             File country_folder = new File(basePath);

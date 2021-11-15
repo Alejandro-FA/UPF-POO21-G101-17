@@ -27,12 +27,7 @@ public class MyWindow extends javax.swing.JFrame {
         /* Input. All the country names (and its corresponding continent) are stored in
         a separate file for convenience. */
         if (args.length > 0) {
-            if ( args[0].equals("-s") || args[0].equals("--simple") ) {
-                String inputPath = "assets" + fs + "continents-dict-simple.csv";
-                System.out.println("Executing simple case. Reading dictionary of countries from " + inputPath + "..." + newline);
-                return ContinentsDict.read(inputPath);
-            }
-            else if ( args[0].equals("-t") || args[0].equals("--test") ) {
+            if ( args[0].equals("-t") || args[0].equals("--test") ) {
                 String inputPath = "assets" + fs + "continents-dict-test.csv";
                 System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + "..." + newline);
                 return ContinentsDict.read(inputPath);
@@ -42,12 +37,17 @@ public class MyWindow extends javax.swing.JFrame {
                 System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + "..." + newline);
                 return ContinentsDict.read(inputPath);
             }
+            else {
+                System.out.println("ERROR. Incorrect usage.");
+                System.out.println("Pass -t or --test for executing a test case (just draws Italy).");
+                System.out.println("Pass -c or --complex for drawing the whole World.");
+                System.exit(1);
+            }
         }
         System.out.println("Warning. Execution mode not specified.");
-        System.out.println("Pass -s or --simple for executing a simple case.");
         System.out.println("Pass -t or --test for executing a test case (just draws Italy).");
         System.out.println("Pass -c or --complex for drawing the whole World.");
-        System.out.println("Executing simple case. Reading dictionary of countries from " + "assets" + fs + "continents-dict-simple.csv" + newline);
+        System.out.println("Executing complex case. Reading dictionary of countries from " + ContinentsDict.defaultPath + "..." + newline);
         return ContinentsDict.read();
     }
 

@@ -34,7 +34,7 @@ public class BorderFiles {
                     
                     // Parse coordinates and write them to a new file with CSV format
                     if ( polygonType.equals("MultiPolygon") ) {
-                        String polygons[] = rawCoords.split(Pattern.quote("] ],")); // Split each separate polygon
+                        String[] polygons = rawCoords.split(Pattern.quote("] ],")); // Split each separate polygon
                         for (int i = 0; i < polygons.length; i++) {
                             String parsedCoords = parseCoord(polygons[i]);
                             writeCoords(basePath + "-" + i + ".csv", parsedCoords);

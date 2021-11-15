@@ -12,7 +12,7 @@ public class World {
 
     /************************ Methods ****************************/
     public void draw(java.awt.Graphics g) {
-        int i = 0;
+        int i = 1;
         int iTotal = conts.size();
         for (Continent c: conts) {
             System.out.println("Drawing continent... (" + i + "/" + iTotal + ")");

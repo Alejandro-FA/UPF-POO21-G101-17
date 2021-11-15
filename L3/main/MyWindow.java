@@ -29,12 +29,12 @@ public class MyWindow extends javax.swing.JFrame {
         if (args.length > 0) {
             if ( args[0].equals("-t") || args[0].equals("--test") ) {
                 String inputPath = "assets" + fs + "continents-dict-test.csv";
-                System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + "..." + newline);
+                System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + newline);
                 return ContinentsDict.read(inputPath);
             }
             else if ( args[0].equals("-c") || args[0].equals("--complex") ) {
                 String inputPath = "assets" + fs + "continents-dict.csv";
-                System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + "..." + newline);
+                System.out.println("Executing test case. Reading dictionary of countries from " + inputPath + newline);
                 return ContinentsDict.read(inputPath);
             }
             else {
@@ -45,16 +45,16 @@ public class MyWindow extends javax.swing.JFrame {
             }
         }
         System.out.println("Warning. Execution mode not specified.");
-        System.out.println("Pass -t or --test for executing a test case (just draws Italy).");
+        System.out.println("Pass -t or --test for executing a test case (just draws a few countries).");
         System.out.println("Pass -c or --complex for drawing the whole World.");
-        System.out.println("Executing complex case. Reading dictionary of countries from " + ContinentsDict.defaultPath + "..." + newline);
+        System.out.println("Executing complex case. Reading dictionary of countries from " + ContinentsDict.defaultPath + newline);
         return ContinentsDict.read();
     }
 
     public static void main( String[] args ) {
         Map<String, String> dict = selectInput(args);
         Map<String, LinkedList<Country>> continents = new HashMap<String, LinkedList<Country>>();
-        int i = 0;
+        int i = 1;
         int iTotal = dict.size();
 
         for (String countryName: dict.keySet()) {

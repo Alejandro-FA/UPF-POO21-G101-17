@@ -10,7 +10,7 @@ public class Continent {
         this.countries = countries;
     }
 
-    /************************ Methods *************************/
+    /************************ Methods ****************************/
     public void draw(java.awt.Graphics g){
         int i = 0;
         int iTotal = countries.size();

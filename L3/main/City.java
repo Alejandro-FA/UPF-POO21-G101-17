@@ -1,9 +1,16 @@
 package main;
 public class City extends GeoPoint {
-    private int numhab;
+    /************************ Attributes *************************/
+    private int numHab;
 
-    public City(double xInit, double yInit, String name, int habitants){
+    /************************ Constructor ************************/
+    public City(double xInit, double yInit, String name, int numHab) {
         super(xInit, yInit, name);
-        numhab = habitants;
+        this.numHab = numHab;
+    }
+
+    /************************ Methods ****************************/
+    public int getNumHab() {
+        return numHab;
     }
 }

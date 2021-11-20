@@ -37,9 +37,7 @@ public class Country{
 
     public double getArea(){
         double area = 0;
-        for(PolygonalRegion region: regions){
-            area += region.getArea();
-        }
+        for(PolygonalRegion region: regions) area += region.getArea();
         return area;
     }
 

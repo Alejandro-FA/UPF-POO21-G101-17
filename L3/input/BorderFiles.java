@@ -1,18 +1,22 @@
 package input;
-import java.util.Scanner;
-import java.util.Map;
+import java.util.*;
+import java.io.*;
 import java.util.regex.Pattern;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import main.Point;
+import main.MyMap;
+import main.PolygonalRegion;
 
-public class BorderFiles {
+public final class BorderFiles {
+    /************************ Attributes *************************/
     public static final String csvDelimiter = ";";
     public static final String newline = System.lineSeparator();
     public static final String fs = File.separator;
     public static final String defaultFolder = "assets";
 
+    /************************ Constructor ************************/
+    private BorderFiles(){}; // Private constructor to avoid instantiation
+
+    /************************ Methods ****************************/
     // Convert the countries.geojson file available in https://datahub.io/core/geo-countries to multiple .csv files
     public static void json2CSV(String geojsonPath) {
         Map<String, String> dict = ContinentsDict.read(); // Read continentds-dict.csv and store it as a Map.
@@ -92,5 +96,28 @@ public class BorderFiles {
             System.out.println("Error. Could not write to " + filePath);
             e.printStackTrace();
         }
+    }
+
+    // Read file that contains border coordinates
+    public static PolygonalRegion read(File file) {
+        try {
+            Scanner scan = new Scanner(file);
+            scan.useDelimiter("[" + csvDelimiter + newline + "]"); // Specify possible delimiters
+            List<Point> points = new LinkedList<Point>(); // Initialize list of points;
+            while (scan.hasNext()) {
+                double longitude = scan.nextDouble();
+                double latitude = scan.nextDouble();
+                Point p = MyMap.webMercatorProj(latitude, longitude);
+                points.add(p);
+            }
+            scan.close();
+            return new PolygonalRegion(points);
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("Error when reading " + file.getAbsolutePath());
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

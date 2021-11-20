@@ -1,17 +1,22 @@
 package input;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
+import main.City;
+import main.Point;
+import main.MyMap;
 
-public class CityFiles {
+public final class CityFiles {
+    /************************ Attributes *************************/
     public static final String csvDelimiter = ";";
     public static final String newline = System.lineSeparator();
     public static final String fs = File.separator;
     public static final String defaultFolder = "assets";
     public static final String defaultPath = "cities.csv";
 
+    /************************ Constructor ************************/
+    private CityFiles(){}; // Private constructor to avoid instantiation
+
+    /************************ Methods ****************************/
     // Write the specified city to the specified country with CSV format
     private static void writeTo(String filePath, boolean append, String cityName, int numInhab, double latitude, double longitude) {
         try {
@@ -45,5 +50,30 @@ public class CityFiles {
             writeTo(defaultFolder + fs + dict.get(country) + fs + country + fs + defaultPath, append, cityName, numInhab, latitude, longitude);
             System.out.println(cityName + " written to " + country + " successfully");
         }
+    }
+
+    // Read files that contains City information
+    public static List<City> read(File file) {
+        try {
+            Scanner city_scan = new Scanner(file);
+            city_scan.useDelimiter("[" + csvDelimiter + newline + "]");
+            List<City> cities = new LinkedList<City>();
+            while (city_scan.hasNext()){
+                String name = city_scan.next();
+                int habitants = city_scan.nextInt();
+                double latitude = city_scan.nextDouble();
+                double longitude = city_scan.nextDouble();
+                Point p = MyMap.webMercatorProj(latitude, longitude);
+                cities.add(new City(p.getX(), p.getY(), name, habitants) );
+            }
+            city_scan.close();
+            return cities;
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("Error when reading " + file.getAbsolutePath());
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

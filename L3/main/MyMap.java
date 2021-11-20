@@ -39,9 +39,10 @@ public class MyMap extends javax.swing.JPanel {
         double x = Math.floor( xdim/(2*Math.PI) * Math.pow(2, zoomLevel) * (longitude + Math.PI) );
         double y = Math.floor( ydim/(2*Math.PI) * Math.pow(2, zoomLevel) * (Math.PI - Math.log( Math.tan(Math.PI/4 + latitude/2)) ) );
 
-        // double x = xdim/(2*Math.PI) * Math.pow(2, zoomLevel) * (longitude + Math.PI);
-        // double y = ydim/(2*Math.PI) * Math.pow(2, zoomLevel) * (Math.PI - Math.log( Math.tan(Math.PI/4 + latitude/2)) );
-
+        /* Because the Mercator projects the poles at infinity, a map using the Web Mercator projection cannot show the poles.
+        Services such as Google Maps cut off coverage at 85.051129° north and south. We have decided to set the maximum value according to the window dimensions.
+        The value 85.051129° is the latitude at which the full projected map becomes a square. (https://en.wikipedia.org/wiki/Web_Mercator_projection) */
+        y = Math.min(y, ydim);
         return new Point(x, y);
     }
 }

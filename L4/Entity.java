@@ -1,4 +1,3 @@
-
 import java.awt.*;
 
 abstract public class Entity {
@@ -9,7 +8,5 @@ abstract public class Entity {
 	}
 
 	abstract public void draw( java.awt.Graphics g );
-
 	abstract public void translate( int dx, int dy );
-	
 }

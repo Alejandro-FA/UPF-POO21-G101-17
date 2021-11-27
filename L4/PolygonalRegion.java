@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.LinkedList;
 import java.awt.*;
 
 public class PolygonalRegion extends Region {
@@ -10,6 +11,12 @@ public class PolygonalRegion extends Region {
     public PolygonalRegion(Color lineColor, Color fillColor, List<Point> points) {
         super(lineColor, fillColor);
         this.points = points;
+    }
+
+    // Additional constructor to allow adding points one by one
+    public PolygonalRegion(Color lineColor, Color fillColor) {
+        super(lineColor, fillColor);
+        this.points = new LinkedList<Point>();
     }
 
     /************************ Methods ****************************/
@@ -81,5 +88,10 @@ public class PolygonalRegion extends Region {
     
     public void translate(int dx, int dy) {
         for(Point p: points) p.translate(dx, dy);
+    }
+
+    // Adds a point to the list of point. Note that no order control is performed.
+    public void addPoint(Point p) {
+        this.points.add(p);
     }
 }

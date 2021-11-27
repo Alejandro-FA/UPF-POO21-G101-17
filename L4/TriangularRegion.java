@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 import java.awt.*;
 
 public class TriangularRegion extends PolygonalRegion{
@@ -7,10 +6,13 @@ public class TriangularRegion extends PolygonalRegion{
     private Point p3;
 
     public TriangularRegion(Color lineColor, Color fillColor, Point p1, Point p2, Point p3) {
-        super( lineColor, fillColor, new LinkedList<Point>( new Point[] {p1, p2, p3} ) );
+        super(lineColor, fillColor);
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
+        this.addPoint(p1);
+        this.addPoint(p2);
+        this.addPoint(p3);
     }
 
     public double getArea() {

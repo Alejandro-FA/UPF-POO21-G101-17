@@ -63,7 +63,7 @@ We have decided to create the entities in the file `assets`, as it has been expl
 
 The main class is `EntitiesFile`, which is an abstract class, and has the necessary methods to parse the color (`parseColor`), the fields (`parseFields`), and read the files (`read`). The format of the colors is the same for all entities, but the format of the coordinates is not. Consequently, `parseFields` is an abstract method. 
 
-There are two subclasses of `EntitiesFile`, which are `EllipsesFile` and `PolygonsFile`. Both classes override the method `parseFields` in its own way, since. In the class `PolygonsFile` there is an extra method called `parsePoints` since it is not as simple as in `EllipsesFile` to determine which subclass of polygon is, it is just a matter of simplification. 
+There are two subclasses of `EntitiesFile`, which are `EllipsesFile` and `PolygonsFile`. Both classes override the method `parseFields` in its own way. In the class `PolygonsFile` there is an extra method called `parsePoints` since it is not as simple as in `EllipsesFile` to determine which subclass of polygon is (it is just a matter of simplification). 
 
 
 ## main

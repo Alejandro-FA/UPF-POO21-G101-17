@@ -17,11 +17,18 @@ public class EllipsoidalRegion extends Region {
 
     /************************ Methods ****************************/
     public void draw(java.awt.Graphics g){
+        /* Note that drawOval and fillOval don't receive the center of the Ellipsoid.
+        Instead they receive the upper corner (as if enclosed by a rectangle) */
+        int x = (int) (centre.getX() - a);
+        int y = (int) (centre.getY() - b);
+        int width = (int) (2*a);
+        int height = (int) (2*b);
+
         // Set a different color for the border and the body.
         g.setColor(this.fillColor);
-        g.fillOval((int) centre.getX(), (int) centre.getY(), (int) a, (int) b);
+        g.fillOval(x, y, width, height);
         g.setColor(this.lineColor); // lineColor attribute inherited from Entity class
-        g.drawOval( (int) centre.getX(), (int) centre.getY(), (int) a, (int) b );
+        g.drawOval(x, y, width, height);
     }
 
     public void translate(int dx, int dy){

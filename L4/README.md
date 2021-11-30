@@ -59,16 +59,20 @@ This folder stores the files with the information of the entities of the program
 
 ## input
 
-We have decided to create the entities in the file `assets`, as it has been explained above. Therefore, we needed some methods in order to parse those `csv` files and create the entities. 
+We have decided to create the entities in the file `assets`, as it has been explained above. Therefore, we needed some methods in order to parse those `csv` files and create the entities. These methods are in the folder `main`.
 
 The main class is `EntitiesFile`, which is an abstract class, and has the necessary methods to parse the color (`parseColor`), the fields (`parseFields`), and read the files (`read`). The format of the colors is the same for all entities, but the format of the coordinates is not. Consequently, `parseFields` is an abstract method. 
 
-There are two subclasses of `EntitiesFile`, which are `EllipsesFile` and `PolygonsFile`. In the class `PolygonsFile` there is an extra method called `parsePoints` since it is not as simple as in `EllipsesFile` to determine which subclass of polygon is, it is just a matter of simplification. 
+There are two subclasses of `EntitiesFile`, which are `EllipsesFile` and `PolygonsFile`. Both classes override the method `parseFields` in its own way, since. In the class `PolygonsFile` there is an extra method called `parsePoints` since it is not as simple as in `EllipsesFile` to determine which subclass of polygon is, it is just a matter of simplification. 
 
 
 ## main
 
+This folder only contains the class `TestGUI` which is the one that contains the `main` method. In the main method we create an empty `LinkedList` of `Entity`, which will store all the entities from `assets`. 
 
+To do so, for each file in assets we create its associated instance, which is an `EllipsesFile` for ellipses and circles, or a `PolygonsFile` for polygons, rectangles and triangles. As we create those instances, we read the files with the method `read` which is inherited from `EntitiesFile` and we add them to the Linked List `entitiesList`. 
+
+At the end, we create the `EntityDrawer` instance called `drawer`, and we add each entity of `entitiesList` with the given method `addDrawable`. 
 
 
 

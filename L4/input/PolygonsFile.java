@@ -27,7 +27,7 @@ public class PolygonsFile extends EntitiesFile {
 
         Color lineColor = parseColor(sc);
         Color fillColor = parseColor(sc);
-        List<Point> points = parsePoints(sc);
+        List<Point> points = parsePoints(sc.next());
         sc.close();
 
         switch(points.size()) {
@@ -37,14 +37,15 @@ public class PolygonsFile extends EntitiesFile {
         }
     }
 
-    private List<Point> parsePoints(Scanner sc) {
-        sc.useDelimiter("[" + pointDelimiter + csvDelimiter + "]");
+    private List<Point> parsePoints(String rawPoints) {
+        Scanner sc = new Scanner(rawPoints);
+        sc.useDelimiter(pointDelimiter);
         List<Point> points = new LinkedList<Point>();
-        // String test = sc.next();
         while (sc.hasNextDouble()) {
             Point p = new Point(sc.nextDouble(), sc.nextDouble());
             points.add(p);
         }
+        sc.close();
         return points;
     }
 }

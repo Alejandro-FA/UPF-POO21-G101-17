@@ -39,8 +39,8 @@ public class DrawPanel extends JPanel implements MouseListener{
 			if (entity instanceof Region) {
 				Region region = (Region) entity;
 				boolean isClicked = region.isPointInside(p);
-				boolean isSelected = selection.contains(region);
 				if (isClicked) {
+					boolean isSelected = selection.contains(region);
 					changeColor(region, isSelected); // Change color for selection confirmation
 					if (isSelected) selection.remove(region);
 					else selection.add(region);

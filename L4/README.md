@@ -48,9 +48,23 @@ As you can see, we use the constructor without a list of points for the `super` 
 
 ## gui
 
+In order to implement the possibility of selecting entities we have modified the `DrawPanel` class. Besides the instructions given, we have also implemented a method for changing the color of an Entity when it is selected. Furthermore, we have written the code in such a way that it is also possible to remove an Entity from the selection when clicking on it. One minor detail that is worth mentioning is that the `isPointInside` is only implemented in the class `Region` (and its subclasses). Therefore, a downcast from `Entity` is needed, with the appropiate verification using the `instanceof` operator just in case.
+
 ## assets
 
+This folder stores the files with the information of the entities of the program. This comes in handy to avoid clustering the code with multiple instantiations of the `Entity` class. The format of the files is as follows:
+* For `EllipsoidalRegion`: `Rline;Gline;Bline;Rfill;Gfill;Bfill;centerX;centerY;radius1;radius2`
+* For `CircularRegion`: `Rline;Gline;Bline;Rfill;Gfill;Bfill;centerX;centerY;radius`
+* For `PolygonalRegion` and its sublcasses: `Rline;Gline;Bline;Rfill;Gfill;Bfill;points`, where the points are specified with the following format: `point1X,point1Y,point2X,point2Y,...,pointNX,pointNY`
+
 ## input
+
+We have decided to create the entities in the file `assets`, as it has been explained above. Therefore, we needed some methods in order to parse those `csv` files and create the entities. 
+
+The main class is `EntitiesFile`, which is an abstract class, and has the necessary methods to parse the color (`parseColor`), the fields (`parseFields`), and read the files (`read`). The format of the colors is the same for all entities, but the format of the coordinates is not. Consequently, `parseFields` is an abstract method. 
+
+There are two subclasses of `EntitiesFile`, which are `EllipsesFile` and `PolygonsFile`. In the class `PolygonsFile` there is an extra method called `parsePoints` since it is not as simple as in `EllipsesFile` to determine which subclass of polygon is, it is just a matter of simplification. 
+
 
 ## main
 

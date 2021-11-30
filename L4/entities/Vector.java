@@ -1,3 +1,4 @@
+package entities;
 public class Vector {
     private double vx;
     private double vy;

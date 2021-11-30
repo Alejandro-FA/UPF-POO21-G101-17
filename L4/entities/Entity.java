@@ -1,3 +1,4 @@
+package entities;
 import java.awt.*;
 
 abstract public class Entity {

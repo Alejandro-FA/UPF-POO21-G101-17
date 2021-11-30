@@ -1,3 +1,4 @@
+package entities;
 public class Point {
     /************************ Attributes *************************/
     protected double x;

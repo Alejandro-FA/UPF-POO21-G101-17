@@ -1,3 +1,4 @@
+package entities;
 import java.awt.*;
 
 public class TriangularRegion extends PolygonalRegion{

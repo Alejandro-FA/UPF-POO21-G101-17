@@ -1,3 +1,4 @@
+package entities;
 import java.awt.*;
 
 public abstract class Region extends Entity {

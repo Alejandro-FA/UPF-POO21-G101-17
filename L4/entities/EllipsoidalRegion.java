@@ -1,3 +1,4 @@
+package entities;
 import java.awt.*;
 
 public class EllipsoidalRegion extends Region {
@@ -16,6 +17,10 @@ public class EllipsoidalRegion extends Region {
 
     /************************ Methods ****************************/
     public void draw(java.awt.Graphics g){
+        // Set a different color for the border and the body.
+        g.setColor(this.fillColor);
+        g.fillOval((int) centre.getX(), (int) centre.getY(), (int) a, (int) b);
+        g.setColor(this.lineColor); // lineColor attribute inherited from Entity class
         g.drawOval( (int) centre.getX(), (int) centre.getY(), (int) a, (int) b );
     }
 

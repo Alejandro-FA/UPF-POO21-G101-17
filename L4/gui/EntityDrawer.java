@@ -1,4 +1,7 @@
+package gui;
 import javax.swing.*;
+
+import entities.Entity;
 
 public class EntityDrawer extends JFrame {
 

@@ -1,0 +1,1 @@
+javac entities/*.java gui/*.java input/*.java main/*.java

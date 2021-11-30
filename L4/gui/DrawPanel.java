@@ -1,5 +1,9 @@
+package gui;
 import java.awt.*;
 import javax.swing.*;
+
+import entities.Entity;
+
 import java.util.*;
 
 public class DrawPanel extends JPanel {

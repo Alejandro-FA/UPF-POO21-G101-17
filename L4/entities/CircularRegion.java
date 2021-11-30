@@ -1,3 +1,4 @@
+package entities;
 import java.awt.*;
 
 public class CircularRegion extends EllipsoidalRegion {

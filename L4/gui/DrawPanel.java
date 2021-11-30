@@ -40,14 +40,9 @@ public class DrawPanel extends JPanel implements MouseListener{
 				Region region = (Region) entity;
 				boolean isClicked = region.isPointInside(p);
 				boolean isSelected = selection.contains(region);
-				if (isClicked && !isSelected) {
-					selection.add(region);
-					changeColor(region, true);
-				}
-				else if (isClicked && isSelected) {
-					selection.remove(region);
-					changeColor(region, false);
-				}
+				if (isClicked && !isSelected) selection.add(region);
+				else if (isClicked && isSelected) selection.remove(region);
+				changeColor(region, isSelected); // Change color for selection confirmation
 			}
 		}
 	}
@@ -58,7 +53,7 @@ public class DrawPanel extends JPanel implements MouseListener{
 		int red = oldColor.getRed();
 		int green = oldColor.getGreen();
 		int blue = oldColor.getBlue();
-		int alpha = isSelected? 123: 255;
+		int alpha = isSelected? 255: 123;
 		Color newColor = new Color(red, green, blue, alpha);
 		region.setFillColor(newColor);
 	}

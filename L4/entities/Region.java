@@ -18,4 +18,8 @@ public abstract class Region extends Entity {
     public void setFillColor(Color color){
         this.fillColor = color;
     }
+
+    public Color getFillColor(){
+        return this.fillColor;
+    }
 }

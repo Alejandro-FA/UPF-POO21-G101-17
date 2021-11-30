@@ -1,5 +1,6 @@
 package gui;
 import java.awt.Graphics;
+import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 import entities.*;
@@ -39,11 +40,29 @@ public class DrawPanel extends JPanel implements MouseListener{
 				Region region = (Region) entity;
 				boolean isClicked = region.isPointInside(p);
 				boolean isSelected = selection.contains(region);
-				if (isClicked && !isSelected) selection.add(region);
-				else if (isClicked && isSelected) selection.remove(region);
+				if (isClicked && !isSelected) {
+					selection.add(region);
+					changeColor(region, true);
+				}
+				else if (isClicked && isSelected) {
+					selection.remove(region);
+					changeColor(region, false);
+				}
 			}
 		}
 	}
+
+	// Method to change color to indicate that the entity is selected
+	private void changeColor(Region region, boolean isSelected) {
+		Color oldColor = region.getFillColor();
+		int red = oldColor.getRed();
+		int green = oldColor.getGreen();
+		int blue = oldColor.getBlue();
+		int alpha = isSelected? 123: 255;
+		Color newColor = new Color(red, green, blue, alpha);
+		region.setFillColor(newColor);
+	}
+
 	public void mouseReleased(MouseEvent e) {}
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}

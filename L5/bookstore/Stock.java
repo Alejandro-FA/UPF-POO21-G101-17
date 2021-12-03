@@ -7,7 +7,12 @@ public class Stock implements StockInterface {
     private double price;
     private Currency currency;
 
-    public Stock(Book bookinit, int copinit, double priceinit, Currency curinit){}
+    public Stock(Book bookinit, int copinit, double priceinit, Currency curinit){
+        book = bookinit;
+        copies = copinit;
+        price = priceinit;
+        currency = curinit;
+    }
     
     public Book getBook(){
         return book;

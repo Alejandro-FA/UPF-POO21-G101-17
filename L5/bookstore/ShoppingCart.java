@@ -19,7 +19,12 @@ public class ShoppingCart extends BookCollection implements ShoppingCartInterfac
         //     int copies = stock.numberOfCopies();
         //     stock.removeCopies(copies);
         // }
-
+        /**
+         * It is important to notice here that we are building the ShoppingCart from the
+         * catalog instead of reading the "books.xml" file directly. In our case it does
+         * not matter, since we only have 1 ShoppingCart throughout the execution of the
+         * program, but if there were more this would be the apptopiate approach.
+         */
         for (StockInterface s: catalog.collection) {
             if (s instanceof Stock) {
                 Stock stock = (Stock) s;
@@ -54,14 +59,24 @@ public class ShoppingCart extends BookCollection implements ShoppingCartInterfac
     }
     
     public String checkout() {
-        if (this.totalPrice()  > 0.0 ){
+        if ( Double.compare(this.totalPrice(), 0.001) > 0 ){
             long VISANumber = 1234567890;
             String cardHolder = "John Smith";
             double totalPrice = this.totalPrice();
-            Currency currency = Currency.getInstance("EU");
+            Currency currency = Currency.getInstance("EUR");
             Payment payInstance = Payment.getTheInstance();
-            return payInstance.doPayment( VISANumber, cardHolder, totalPrice, currency );
+
+            String payResult = payInstance.doPayment( VISANumber, cardHolder, totalPrice, currency );
+            clearCart(); // Clear the ShoppingCart after checkout
+            return payResult;
         }
         else return "ERROR! The cart is empty.";
+    }
+
+    private void clearCart() {
+        for (StockInterface s: this.collection) {
+            int copies = s.numberOfCopies();
+            s.removeCopies(copies);
+        }
     }
 }

@@ -38,10 +38,12 @@ public class Stock implements StockInterface {
         return copies * price;
     }
 
+    // Added in order to create the collection of the ShoppingCart
     public double getPrice(){
         return price;
     }
 
+    // Added in order to create the collection of the ShoppingCart
     public Currency getCurrency(){
         return currency;
     }

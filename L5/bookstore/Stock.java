@@ -13,6 +13,14 @@ public class Stock implements StockInterface {
         price = priceinit;
         currency = curinit;
     }
+
+    // Copy constructor
+    public Stock(Stock stockToCopy){
+        book = stockToCopy.book;
+        copies = stockToCopy.copies;
+        price = stockToCopy.price;
+        currency = stockToCopy.currency;
+    }
     
     public Book getBook(){
         return book;
@@ -36,15 +44,5 @@ public class Stock implements StockInterface {
 
     public double totalPrice(){
         return copies * price;
-    }
-
-    // Added in order to create the collection of the ShoppingCart
-    public double getPrice(){
-        return price;
-    }
-
-    // Added in order to create the collection of the ShoppingCart
-    public Currency getCurrency(){
-        return currency;
     }
 }

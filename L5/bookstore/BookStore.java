@@ -226,7 +226,7 @@ private void jButton1ActionPerformed( java.awt.event.ActionEvent evt ) {
 	jComboBox2.setModel( new javax.swing.DefaultComboBoxModel< String >( copyChoices() ) );
 	double price = cart.totalPrice();
 	jComboBox3.addItem( booktitle + " x" + copies );
-	jLabel6.setText( price + "€" );
+	jLabel6.setText( String.format("%.2f", price) + "€" ); // Modification to avoid more than 2 decimals being displayed
 	jLabel7.setText( "" );
 }
 

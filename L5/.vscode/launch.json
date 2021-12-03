@@ -1,0 +1,61 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch TestStore",
+            "request": "launch",
+            "mainClass": "bookstore.TestStore",
+            "projectName": "L5_cc5c4a9a"
+        },
+        {
+            "name": "C/C++: Build and Debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "C/C++: Build active file for Debugging",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "linux": {
+                "miDebuggerPath": "/usr/bin/gdb",
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            },
+            "osx": {
+                "externalConsole": true,
+                "MIMode": "lldb"
+            }
+        },
+        {
+            "name": "C/C++: Build and Debug active folder as a single program",
+            "type": "cppdbg",
+            "request": "launch",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "C/C++: Build active folder as a single program for Debugging",
+            "program": "${workspaceFolder}/${workspaceFolderBasename}",
+            "linux": {
+                "miDebuggerPath": "/usr/bin/gdb",
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            },
+            "osx": {
+                "externalConsole": true,
+                "MIMode": "lldb"
+            }
+        }
+    ]
+}

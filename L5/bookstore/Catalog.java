@@ -16,6 +16,7 @@ public class Catalog extends BookCollection {
             String Author =  fields[1];
             Date publicationDate = new Date();
             String dateFormat = "yMd";
+            // TODO: The date obtained is not correct, it returns 28 September of 1975 for the first book.
             try { publicationDate = new SimpleDateFormat(dateFormat).parse(fields[2]); }
             catch(Exception e){ System.out.println("Error when parsing the date."); }
             String publicationPlace = fields[3];

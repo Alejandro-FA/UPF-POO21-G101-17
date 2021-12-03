@@ -17,7 +17,8 @@ public class Payment {
 
 	public String doPayment( long VISANumber, String cardHolder,
 	                         double totalPrice, Currency currency ) {
-		String result = "Paying " + totalPrice + currency.getSymbol() + "; ";
+		String price = String.format("%.2f", totalPrice);
+		String result = "Paying " + price + currency.getSymbol() + "; ";
 		result += "Visa card " + VISANumber + ", holder " + cardHolder + "\n";
 		return result;
 	}

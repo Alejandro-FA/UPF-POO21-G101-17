@@ -8,35 +8,21 @@ public class ShoppingCart extends BookCollection implements ShoppingCartInterfac
         super();
         catalog = catinit;
         /**
-         * Strange use of protected attribute. We thought that it was possible
-         * to access protected attributes from subclasses, but WITHIN AN INSTANCE
-         * 
-         * Instead, here we are accessing an attribute of the super class of
-         * another instance.
-         */
-        // this.collection = catalog.collection;
-        // for(StockInterface stock: this.collection) {
-        //     int copies = stock.numberOfCopies();
-        //     stock.removeCopies(copies);
-        // }
-        /**
          * It is important to notice here that we are building the ShoppingCart from the
          * catalog instead of reading the "books.xml" file directly. In our case it does
          * not matter, since we only have 1 ShoppingCart throughout the execution of the
          * program, but if there were more this would be the apptopiate approach.
-         */
+        */
+
+        // Copy the catalog
         for (StockInterface s: catalog.collection) {
             if (s instanceof Stock) {
-                Stock stock = (Stock) s;
-                Book book = stock.getBook();
-                double price = stock.getPrice();
-                Currency currency = stock.getCurrency();
-                int copies = 0;
-                
-                Stock stockCopy = new Stock(book, copies, price, currency);
+                Stock stockCopy = new Stock((Stock) s);
                 this.collection.add(stockCopy);
             }
         }
+        // Set all number of copies to 0
+        clearCart();
     }
 
     @Override

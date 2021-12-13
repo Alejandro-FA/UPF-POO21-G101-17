@@ -45,10 +45,10 @@ public class ShoppingCart extends BookCollection implements ShoppingCartInterfac
     }
     
     public String checkout() {
-        if ( Double.compare(this.totalPrice(), 0.001) > 0 ){
+        double totalPrice = this.totalPrice();
+        if ( Double.compare(totalPrice, 0.001) > 0 ) {
             long VISANumber = 1234567890;
             String cardHolder = "John Smith";
-            double totalPrice = this.totalPrice();
             Currency currency = Currency.getInstance("EUR");
             Payment payInstance = Payment.getTheInstance();
 
